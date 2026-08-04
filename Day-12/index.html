@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habesha Eatery – Authentic Ethiopian Cuisine in Addis Ababa</title>
+  <meta name="description"
+        content="Habesha Eatery serves traditional Ethiopian injera, tibs and vegetarian dishes. Reserve a table online and explore our full menu with ETB prices." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Skip navigation for keyboard users -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ── Navigation ── -->
+  <nav aria-label="Primary navigation">
+    <a href="#reserve">Reserve</a>
+    <a href="#menu">Menu</a>
+    <a href="#location">Location</a>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <img
+      src="injera.jpg"
+      alt="A colourful Ethiopian injera spread with doro wat, misir and tibs served on a large mesob basket tray"
+      loading="lazy"
+      width="1200"
+      height="420"
+    />
+    <div class="hero-caption">
+      <h1>Habesha Eatery</h1>
+      <p>Authentic Ethiopian flavours in the heart of Addis Ababa</p>
+    </div>
+  </header>
+
+  <!-- ── Main content ── -->
+  <main id="main-content">
+
+    <!-- ── 1. Reservation Form ── -->
+    <section id="reserve" aria-labelledby="reserve-heading">
+      <h2 id="reserve-heading">Reserve a Table</h2>
+
+      <form
+        class="reservation-form"
+        action="/reserve"
+        method="post"
+        novalidate
+      >
+        <!-- Full name -->
+        <div>
+          <label for="full-name">Full Name <span aria-hidden="true">*</span></label>
+          <input
+            id="full-name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            placeholder="Abebe Girma"
+            required
+            aria-required="true"
+          />
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <label for="phone">Phone Number <span aria-hidden="true">*</span></label>
+          <input
+            id="phone"
+            name="tel"
+            type="tel"
+            autocomplete="tel"
+            placeholder="09XXXXXXXX"
+            pattern="09[0-9]{8}"
+            title="Enter a valid Ethiopian mobile number starting with 09 (10 digits total)"
+            required
+            aria-required="true"
+            aria-describedby="phone-hint"
+          />
+          <span id="phone-hint" style="font-size:.8rem;color:#555;">Format: 09XXXXXXXX</span>
+        </div>
+
+        <!-- Guests -->
+        <div>
+          <label for="guests">Number of Guests <span aria-hidden="true">*</span></label>
+          <input
+            id="guests"
+            name="guests"
+            type="number"
+            min="1"
+            max="20"
+            placeholder="2"
+            required
+            aria-required="true"
+          />
+        </div>
+
+        <!-- Date -->
+        <div>
+          <label for="date">Reservation Date <span aria-hidden="true">*</span></label>
+          <input
+            id="date"
+            name="date"
+            type="date"
+            required
+            aria-required="true"
+          />
+        </div>
+
+        <button type="submit" class="full-width">Confirm Reservation</button>
+      </form>
+    </section>
+
+    <!-- ── 2. Menu Table ── -->
+    <section id="menu" aria-labelledby="menu-heading">
+      <h2 id="menu-heading">Our Menu</h2>
+
+      <table class="menu-table">
+        <caption>Habesha Eatery – Food &amp; Beverage Menu (prices in ETB)</caption>
+        <thead>
+          <tr>
+            <th scope="col">Dish</th>
+            <th scope="col">Category</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price (ETB)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Doro Wat</td>
+            <td scope="row">Main – Meat</td>
+            <td>Slow-cooked chicken in spiced berbere sauce with boiled egg</td>
+            <td>320</td>
+          </tr>
+          <tr>
+            <td>Tibs (Beef)</td>
+            <td scope="row">Main – Meat</td>
+            <td>Sautéed beef cubes with onion, rosemary and green pepper</td>
+            <td>280</td>
+          </tr>
+          <tr>
+            <td>Kitfo</td>
+            <td scope="row">Main – Meat</td>
+            <td>Minced lean beef seasoned with mitmita and spiced butter</td>
+            <td>300</td>
+          </tr>
+          <tr>
+            <td>Misir Wat</td>
+            <td scope="row">Vegetarian</td>
+            <td>Red lentils simmered in berbere and niter kibbeh</td>
+            <td>180</td>
+          </tr>
+          <tr>
+            <td>Gomen</td>
+            <td scope="row">Vegetarian</td>
+            <td>Collard greens cooked with garlic, ginger and onion</td>
+            <td>150</td>
+          </tr>
+          <tr>
+            <td>Shiro</td>
+            <td scope="row">Vegetarian</td>
+            <td>Smooth chickpea flour stew with Ethiopian spices</td>
+            <td>160</td>
+          </tr>
+          <tr>
+            <td>Injera (3 pcs)</td>
+            <td scope="row">Bread</td>
+            <td>Traditional fermented teff flatbread</td>
+            <td>60</td>
+          </tr>
+          <tr>
+            <td>Tej</td>
+            <td scope="row">Beverage</td>
+            <td>Traditional Ethiopian honey wine</td>
+            <td>120</td>
+          </tr>
+          <tr>
+            <td>Buna (Coffee)</td>
+            <td scope="row">Beverage</td>
+            <td>Ethiopian coffee ceremony – three rounds</td>
+            <td>80</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ── 3. Location / Map ── -->
+    <section id="location" aria-labelledby="location-heading">
+      <h2 id="location-heading">Find Us</h2>
+      <p style="margin-bottom:1rem;">
+        Bole Road, Addis Ababa, Ethiopia &nbsp;|&nbsp;
+        <a href="tel:+251910999967">+251 910 999 967</a>
+      </p>
+
+      <div class="map-wrapper">
+        <iframe
+          title="Habesha Eatery location on Google Maps – Bole Road, Addis Ababa"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.5!2d38.7894!3d9.0105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x8467b6b037a24d49!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2set!4v1700000000000"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          tabindex="0"
+        ></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>&copy; 2025 Habesha Eatery. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
