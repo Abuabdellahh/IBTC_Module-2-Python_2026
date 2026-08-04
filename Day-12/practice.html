@@ -1,0 +1,85 @@
+<form action="/reserve" method="post">
+  <label for="name">Full name</label>
+  <input id="name" name="name" required />
+  <label for="guests">Guests</label>
+  <input id="guests" name="guests" type="number" min="1" max="20" />
+  <button type="submit">Reserve</button>
+</form>
+
+<fieldset>
+  <legend>Delivery address</legend>
+  <label for="city">City</label>
+  <input id="city" name="city" value="Addis Ababa" />
+  <label for="area">Sub-city</label>
+  <input id="area" name="area" placeholder="Bole / Kazanchis" />
+</fieldset>
+<!-- label.for === input.id -->
+
+<form action="/beneficiaries" method="post">
+  <fieldset>
+    <legend>New beneficiary</legend>
+    <label for="name">Full name</label>
+    <input id="name" name="name" required autocomplete="name" />
+    <label for="acct">Account number</label>
+    <input id="acct" name="acct" type="text" pattern="[0-9]{13}" required />
+    <label for="amt">Amount (ETB)</label>
+    <input id="amt" name="amt" type="number" min="1" step="0.01" required />
+  </fieldset>
+  <button>Save beneficiary</button>
+</form>
+
+
+
+<!-- this  is  table -->
+
+
+
+<table style="border-collapse: collapse;">
+<caption>Addis branch opening hours</caption>
+<thead>
+<tr style ="border: 1px solid black;">
+<th scope="col" style="border: 1px solid black;">Branch</th>
+<th scope="col" style="border: 1px solid black;">Opens</th>
+<th scope="col" style="border: 1px solid black;">Closes</th>
+</tr>
+</thead>
+<tbody style="border: 1px solid black;">
+<tr style ="border: 1px solid black;">
+<th scope="row">Bole</th>
+
+
+<td  style ="border: 1px solid black;">
+  8:30</td>
+<td  style ="border: 1px solid black;">
+  17:00</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+<video controls width="640" poster="thumb.jpg">
+<source src="tour.webm" type="video/webm">
+<source src="tour.mp4" type="video/mp4">
+<track kind="captions" srclang="am"
+src="tour-am.vtt" label="Amharic">
+Your browser cannot play this video.
+</video>
+<audio controls>
+<source src="jingle.mp3" type="audio/mpeg">
+</audio>
+
+
+
+
+
+
+<iframe 
+  src="https://maps.google.com/maps?q=Adwa+Victory+Memorial+Park+Addis+Ababa&output=embed" 
+  width="600" 
+  height="450" 
+  style="border:0;" 
+  allowfullscreen="" 
+  loading="lazy">
+</iframe>
