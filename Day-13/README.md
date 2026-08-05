@@ -1,28 +1,43 @@
-# Habesha Eatery – Landing Page
+# Habesha Eatery – Menu Card Component
 
-Accessible, SEO-ready single-page site for a fictional Ethiopian restaurant.
+Accessible, SEO-ready single-page site for a fictional Ethiopian restaurant,
+featuring a fully styled `.menu-card` component.
 
 ## Project Structure
 
 ```
-Day-12/
-├── index.html      ← Main page (hero, form, menu, map)
-├── style.css       ← Base styles + keyboard-nav focus styles
-├── assets/
-│   └── hero.jpg    ← Hero image (add your own)
+Day-13/
+├── starter.html        ← Main page (hero, menu cards, form, map)
+├── styles.css          ← Global reset, design tokens, .menu-card styles
+├── injera.jpg          ← Hero image
+├── enjera.jpg          ← Additional food image
 └── README.md
 ```
 
-## Features
+## Deliverable – `.menu-card` Component
+
+A single styled component demonstrating CSS variables, the box model,
+typography, pseudo-classes, and pseudo-elements.
 
 | Requirement | Implementation |
 |---|---|
-| Reservation form | `name`, `tel` (pattern `09[0-9]{8}`), `guests` (1–20), `date` — all with `<label for>` |
-| Menu table | `<table>` with `<caption>`, `scope="col/row"`, ETB price column |
-| Hero image | Meaningful `alt`, `loading="lazy"`, `width`/`height` set |
-| Google Map | `<iframe>` with descriptive `title` attribute |
-| SEO | `<title>`, `<meta name="description">`, ordered heading outline (h1 → h2) |
-| Keyboard nav | Skip-link, `focus-visible` outlines on all interactive elements, no focus traps |
+| Global reset | `box-sizing: border-box` on `*, *::before, *::after` |
+| Base typography | `font-family` and `line-height` set on `body` |
+| Card box model | `padding`, `border`, `border-top` gold accent (4px) |
+| CSS variables | All colours use `var()` — zero raw hex in card rules |
+| `:hover` state | Card lifts with `translateY(-4px)` and warms background |
+| `::before` pseudo-element | Injects `"ETB "` before the numeric price |
+| `:nth-child(even)` | Zebra-stripes the `.menu-card__ingredients` list |
+
+## Menu Card Self-Check
+
+- [ ] `box-sizing: border-box` applied universally
+- [ ] `font-family` and `line-height` declared on `body`
+- [ ] Card has `padding`, a `border`, and a gold `border-top` accent
+- [ ] Every colour value goes through `var()` — no raw hex in card rules
+- [ ] Card lifts and changes background on `:hover`
+- [ ] `.menu-card__price::before` shows `"ETB "` in the browser
+- [ ] Even ingredient rows have a different background (`:nth-child(even)`)
 
 ## Keyboard Navigation Checklist
 
@@ -35,15 +50,16 @@ Day-12/
 
 ## Setup
 
-1. Add a hero image at `assets/hero.jpg` (recommended: 1200 × 420 px).
-2. Open `index.html` in a browser — no build step required.
+1. Open `starter.html` in a browser — no build step required.
+2. Open DevTools → inspect `.menu-card` to verify computed box dimensions.
+3. Hover a card to confirm the `:hover` state and check `::before` on the price.
 
 ## Submission
 
 ```bash
 git init
 git add .
-git commit -m "feat: Habesha Eatery landing page"
+git commit -m "feat(menu-card): style .menu-card with CSS variables and pseudo-selectors"
 git remote add origin https://github.com/<your-username>/habesha-eatery.git
 git push -u origin main
 ```
