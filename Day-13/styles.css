@@ -1,121 +1,103 @@
-/* ============================================================
-   styles.css  –  Habesha Eatery
-   Covers: global reset · typography · .menu-card component
-   ============================================================ */
+/* Day-13 – CSS Box Model & Menu Card Component · Habesha Eatery */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-
-/* ── 1. CSS Custom Properties (design tokens) ──────────────── */
 :root {
-  /* Colour tokens – every colour in the file must use var() */
-  --clr-gold:        #c9a84c;   /* brand accent / top border  */
-  --clr-gold-light:  #f5e9c8;   /* hover background tint      */
-  --clr-bg:          #ffffff;   /* card background            */
-  --clr-surface:     #faf7f2;   /* page background            */
-  --clr-text:        #1a1a1a;   /* primary text               */
-  --clr-text-muted:  #5a5a5a;   /* description / muted text   */
-  --clr-border:      #e0d5c1;   /* card border                */
-  --clr-stripe:      #f0ebe0;   /* zebra-stripe even rows     */
-  --clr-price:       #8b1a1a;   /* price value                */
-  --clr-focus:       #0066cc;   /* keyboard focus ring        */
-  --clr-skip-bg:     #1a1a1a;   /* skip-link background       */
-  --clr-skip-text:   #ffffff;   /* skip-link text             */
+  --clr-gold:        #c9a84c;
+  --clr-gold-light:  #f5e9c8;
+  --clr-bg:          #ffffff;
+  --clr-surface:     #faf7f2;
+  --clr-text:        #1a1a1a;
+  --clr-text-muted:  #5a5a5a;
+  --clr-border:      #e0d5c1;
+  --clr-stripe:      #f0ebe0;
+  --clr-price:       #8b1a1a;
+  --clr-focus:       #0066cc;
+  --clr-nav-bg:      #1a1a1a;
+  --clr-nav-text:    #ffffff;
 
-  /* Spacing scale */
-  --space-xs:  0.25rem;
-  --space-sm:  0.5rem;
-  --space-md:  1rem;
-  --space-lg:  1.5rem;
-  --space-xl:  2rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
 
-  /* Typography */
-  --font-body:    'Georgia', serif;
-  --font-ui:      system-ui, sans-serif;
-  --lh-body:      1.6;
-  --lh-heading:   1.2;
+  --font-body:  Georgia, serif;
+  --font-ui:    system-ui, sans-serif;
+  --lh-body:    1.6;
+  --lh-heading: 1.2;
 
-  /* Card chrome */
   --card-radius:       8px;
-  --card-accent-h:     4px;   /* gold top-border thickness  */
-  --card-shadow:       0 2px 8px rgba(0, 0, 0, 0.08);
-  --card-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.14);
-  --transition-speed:  0.2s;
+  --card-accent:       4px;
+  --card-shadow:       0 2px 8px rgba(0,0,0,.08);
+  --card-shadow-hover: 0 6px 20px rgba(0,0,0,.14);
+  --transition:        0.2s ease;
 }
 
-
-/* ── 2. Global Reset ────────────────────────────────────────── */
-/*
-  box-sizing: border-box  →  padding & border are INSIDE the
-  declared width/height, so layout maths is predictable.
-*/
-*,
-*::before,
-*::after {
-  box-sizing: border-box;   /* ← required by the brief */
-  margin: 0;
-  padding: 0;
-}
-
-
-/* ── 3. Base Typography on <body> ───────────────────────────── */
 body {
-  font-family: var(--font-body);   /* ← required by the brief */
-  line-height: var(--lh-body);     /* ← required by the brief */
+  font-family: var(--font-body);
+  line-height: var(--lh-body);
   color: var(--clr-text);
-  background-color: var(--clr-surface);
+  background: var(--clr-surface);
 }
 
+img { max-width: 100%; height: auto; display: block; }
 
-/* ── 4. Skip Link (keyboard accessibility) ──────────────────── */
+/* ── Skip link ── */
 .skip-link {
   position: absolute;
-  top: -100%;          /* hidden off-screen until focused */
+  top: -100%;
   left: var(--space-md);
   padding: var(--space-sm) var(--space-md);
-  background: var(--clr-skip-bg);
-  color: var(--clr-skip-text);
+  background: var(--clr-nav-bg);
+  color: var(--clr-nav-text);
   font-family: var(--font-ui);
   font-weight: 700;
   border-radius: var(--card-radius);
   text-decoration: none;
   z-index: 9999;
 }
+.skip-link:focus { top: var(--space-md); }
 
-/* Slide into view on focus – first Tab press */
-.skip-link:focus {
-  top: var(--space-md);
-}
-
-
-/* ── 5. Site Header ─────────────────────────────────────────── */
+/* ── Header ── */
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
   padding: var(--space-md) var(--space-xl);
-  background: var(--clr-bg);
-  border-bottom: var(--card-accent-h) solid var(--clr-gold);
+  background: var(--clr-nav-bg);
+  border-bottom: var(--card-accent) solid var(--clr-gold);
 }
 
 header h1 {
   font-family: var(--font-body);
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: var(--lh-heading);
-  color: var(--clr-text);
+  color: var(--clr-gold);
+}
+
+header nav {
+  display: flex;
+  gap: var(--space-lg);
 }
 
 header nav a {
-  margin-left: var(--space-lg);
   font-family: var(--font-ui);
   font-size: 0.95rem;
-  color: var(--clr-price);
+  color: var(--clr-nav-text);
   text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition), border-color var(--transition);
 }
 
 header nav a:hover {
-  text-decoration: underline;
+  color: var(--clr-gold);
+  border-bottom-color: var(--clr-gold);
 }
 
-/* Keyboard focus ring – all interactive elements */
+/* ── Focus ── */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -124,10 +106,9 @@ iframe:focus-visible {
   outline-offset: 3px;
 }
 
-
-/* ── 6. Section Layout ──────────────────────────────────────── */
+/* ── Main ── */
 main {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: var(--space-xl) var(--space-md);
 }
@@ -140,7 +121,6 @@ section h2 {
   font-size: 1.4rem;
   line-height: var(--lh-heading);
   margin-bottom: var(--space-md);
-  color: var(--clr-text);
   border-bottom: 2px solid var(--clr-gold);
   padding-bottom: var(--space-xs);
 }
@@ -150,101 +130,80 @@ section img {
   width: 100%;
   height: auto;
   border-radius: var(--card-radius);
-  display: block;
 }
 
-/* Card grid */
+/* ── Menu grid — #menu is the grid container ── */
 #menu {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--space-lg);
 }
 
-/* The h2 spans the full grid width */
 #menu h2 {
   grid-column: 1 / -1;
 }
 
-
-/* ── 7. .menu-card Component ────────────────────────────────── */
-/*
-  Box model applied:
-    padding  → inner breathing room
-    border   → 1px solid on three sides + 4px gold top accent
-    width    → controlled by the grid (auto-fill)
-    No raw hex values – every colour uses var()
-*/
-.menu-card {
-  /* Box model */
-  padding: var(--space-lg);                          /* inner space   */
-  border: 1px solid var(--clr-border);               /* outer stroke  */
-  border-top: var(--card-accent-h) solid var(--clr-gold); /* gold accent   */
-  border-radius: var(--card-radius);
-
-  /* Colour – all via var() */
-  background-color: var(--clr-bg);
-  color: var(--clr-text);
-
-  /* Elevation */
-  box-shadow: var(--card-shadow);
-
-  /* Smooth hover transition */
-  transition:
-    transform var(--transition-speed) ease,
-    box-shadow var(--transition-speed) ease,
-    background-color var(--transition-speed) ease;
+@media (min-width: 600px) {
+  #menu { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ── 7a. :hover pseudo-class ── */
-/*
-  Lifts the card and warms the background so the user knows
-  the card is interactive / selectable.
-*/
+@media (min-width: 960px) {
+  #menu { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── .menu-card ── */
+.menu-card {
+  padding: var(--space-lg);
+  border: 1px solid var(--clr-border);
+  border-top: var(--card-accent) solid var(--clr-gold);
+  border-radius: var(--card-radius);
+  background: var(--clr-bg);
+  box-shadow: var(--card-shadow);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
 .menu-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--card-shadow-hover);
-  background-color: var(--clr-gold-light);   /* warm tint via var() */
+  background: var(--clr-gold-light);
 }
 
-/* ── 7b. Card name (h3) ── */
+@media (prefers-reduced-motion: reduce) {
+  .menu-card, .menu-card:hover { transition: none; transform: none; }
+}
+
 .menu-card__name {
   font-size: 1.15rem;
   line-height: var(--lh-heading);
   margin-bottom: var(--space-sm);
-  color: var(--clr-text);
 }
 
-/* ── 7c. Card description ── */
 .menu-card__description {
   font-size: 0.9rem;
-  color: var(--clr-text-muted);   /* muted via var() */
+  color: var(--clr-text-muted);
   margin-bottom: var(--space-md);
 }
 
-/* ── 7d. Price – ::before pseudo-element ── */
-/*
-  The HTML stores only the numeric value (e.g. "320").
-  ::before injects the currency label "ETB " so the
-  presentation layer owns the formatting, not the markup.
-*/
 .menu-card__price {
   display: inline-block;
   font-family: var(--font-ui);
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--clr-price);        /* deep red via var() */
+  color: var(--clr-price);
   margin-bottom: var(--space-md);
 }
 
 .menu-card__price::before {
-  content: "ETB ";               /* ← pseudo-element required by brief */
+  content: "ETB ";
   font-weight: 400;
   font-size: 0.85rem;
-  color: var(--clr-text-muted);  /* lighter label via var() */
+  color: var(--clr-text-muted);
   letter-spacing: 0.04em;
 }
 
-/* ── 7e. Ingredient list ── */
 .menu-card__ingredients {
   list-style: none;
   font-family: var(--font-ui);
@@ -257,13 +216,11 @@ section img {
   padding: var(--space-xs) var(--space-sm);
 }
 
-/* Zebra-stripe: every even <li> gets a tinted background */
 .menu-card__ingredients li:nth-child(even) {
-  background-color: var(--clr-stripe);   /* ← :nth-child(even) required by brief */
+  background: var(--clr-stripe);
 }
 
-
-/* ── 8. Reservation Form ────────────────────────────────────── */
+/* ── Reservation form ── */
 form {
   display: grid;
   gap: var(--space-sm);
@@ -286,27 +243,36 @@ input {
   font-size: 1rem;
   color: var(--clr-text);
   background: var(--clr-bg);
+  transition: border-color var(--transition);
 }
+
+input:focus { border-color: var(--clr-gold); outline: none; }
 
 button[type="submit"] {
   padding: var(--space-sm) var(--space-lg);
   background: var(--clr-gold);
-  color: var(--clr-bg);
+  color: var(--clr-nav-bg);
   border: none;
   border-radius: 4px;
   font-family: var(--font-ui);
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background var(--transition-speed) ease;
+  transition: background var(--transition);
 }
 
-button[type="submit"]:hover {
-  background: var(--clr-price);
+button[type="submit"]:hover { background: var(--clr-price); color: #fff; }
+
+/* ── Map ── */
+#location iframe {
+  width: 100%;
+  max-width: 700px;
+  height: 350px;
+  border-radius: var(--card-radius);
+  display: block;
 }
 
-
-/* ── 9. Footer ──────────────────────────────────────────────── */
+/* ── Footer ── */
 footer {
   text-align: center;
   padding: var(--space-lg);
@@ -314,4 +280,11 @@ footer {
   font-size: 0.85rem;
   color: var(--clr-text-muted);
   border-top: 1px solid var(--clr-border);
+  background: var(--clr-bg);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  header { padding: var(--space-md); }
+  header nav { gap: var(--space-md); }
 }
