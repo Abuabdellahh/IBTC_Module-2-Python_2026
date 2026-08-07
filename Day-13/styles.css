@@ -1,290 +1,82 @@
-/* Day-13 – CSS Box Model & Menu Card Component · Habesha Eatery */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --clr-gold:        #c9a84c;
-  --clr-gold-light:  #f5e9c8;
-  --clr-bg:          #ffffff;
-  --clr-surface:     #faf7f2;
-  --clr-text:        #1a1a1a;
-  --clr-text-muted:  #5a5a5a;
-  --clr-border:      #e0d5c1;
-  --clr-stripe:      #f0ebe0;
-  --clr-price:       #8b1a1a;
-  --clr-focus:       #0066cc;
-  --clr-nav-bg:      #1a1a1a;
-  --clr-nav-text:    #ffffff;
-
-  --space-xs: 0.25rem;
-  --space-sm: 0.5rem;
-  --space-md: 1rem;
-  --space-lg: 1.5rem;
-  --space-xl: 2rem;
-
-  --font-body:  Georgia, serif;
-  --font-ui:    system-ui, sans-serif;
-  --lh-body:    1.6;
-  --lh-heading: 1.2;
-
-  --card-radius:       8px;
-  --card-accent:       4px;
-  --card-shadow:       0 2px 8px rgba(0,0,0,.08);
-  --card-shadow-hover: 0 6px 20px rgba(0,0,0,.14);
-  --transition:        0.2s ease;
+  --gold:       #c9a84c;
+  --gold-light: #f5e9c8;
+  --bg:         #ffffff;
+  --surface:    #faf7f2;
+  --text:       #1a1a1a;
+  --muted:      #5a5a5a;
+  --border:     #e0d5c1;
+  --stripe:     #f0ebe0;
+  --price:      #8b1a1a;
+  --focus:      #0066cc;
+  --nav-bg:     #1a1a1a;
+  --nav-text:   #ffffff;
+  --radius:     8px;
+  --accent:     4px;
+  --shadow:     0 2px 8px rgba(0,0,0,.08);
+  --shadow-h:   0 6px 20px rgba(0,0,0,.14);
+  --ease:       0.2s ease;
 }
 
-body {
-  font-family: var(--font-body);
-  line-height: var(--lh-body);
-  color: var(--clr-text);
-  background: var(--clr-surface);
-}
+body { font-family: Georgia, serif; line-height: 1.6; color: var(--text); background: var(--surface); }
+img  { max-width: 100%; height: auto; display: block; }
 
-img { max-width: 100%; height: auto; display: block; }
+/* skip link */
+.skip-link { position: absolute; top: -100%; left: 1rem; padding: .5rem 1rem; background: var(--nav-bg); color: var(--nav-text); font-family: system-ui, sans-serif; font-weight: 700; border-radius: var(--radius); text-decoration: none; z-index: 9999; }
+.skip-link:focus { top: 1rem; }
 
-/* ── Skip link ── */
-.skip-link {
-  position: absolute;
-  top: -100%;
-  left: var(--space-md);
-  padding: var(--space-sm) var(--space-md);
-  background: var(--clr-nav-bg);
-  color: var(--clr-nav-text);
-  font-family: var(--font-ui);
-  font-weight: 700;
-  border-radius: var(--card-radius);
-  text-decoration: none;
-  z-index: 9999;
-}
-.skip-link:focus { top: var(--space-md); }
+/* navbar */
+header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; padding: 0 2rem; height: 64px; background: var(--nav-bg); border-bottom: var(--accent) solid var(--gold); position: sticky; top: 0; z-index: 100; }
+header h1 { font-size: 1.4rem; color: var(--gold); letter-spacing: .02em; }
+header nav { display: flex; gap: 1.5rem; }
+header nav a { font-family: system-ui, sans-serif; font-size: .95rem; color: var(--nav-text); text-decoration: none; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: color var(--ease), border-color var(--ease); }
+header nav a:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
-/* ── Header ── */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  padding: var(--space-md) var(--space-xl);
-  background: var(--clr-nav-bg);
-  border-bottom: var(--card-accent) solid var(--clr-gold);
-}
+/* focus */
+a:focus-visible, button:focus-visible, input:focus-visible, iframe:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 
-header h1 {
-  font-family: var(--font-body);
-  font-size: 1.4rem;
-  line-height: var(--lh-heading);
-  color: var(--clr-gold);
-}
+/* main */
+main { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+section { margin-bottom: 2rem; }
+section h2 { font-size: 1.4rem; line-height: 1.2; margin-bottom: 1rem; border-bottom: 2px solid var(--gold); padding-bottom: .25rem; }
+section img { width: 100%; height: auto; border-radius: var(--radius); }
 
-header nav {
-  display: flex;
-  gap: var(--space-lg);
-}
+/* menu grid */
+#menu { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+#menu h2 { grid-column: 1 / -1; }
+@media (min-width: 600px)  { #menu { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px)  { #menu { grid-template-columns: repeat(3, 1fr); } }
 
-header nav a {
-  font-family: var(--font-ui);
-  font-size: 0.95rem;
-  color: var(--clr-nav-text);
-  text-decoration: none;
-  padding-bottom: 2px;
-  border-bottom: 2px solid transparent;
-  transition: color var(--transition), border-color var(--transition);
-}
+/* card */
+.menu-card { padding: 1.5rem; border: 1px solid var(--border); border-top: var(--accent) solid var(--gold); border-radius: var(--radius); background: var(--bg); box-shadow: var(--shadow); transition: transform var(--ease), box-shadow var(--ease), background var(--ease); }
+.menu-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-h); background: var(--gold-light); }
+@media (prefers-reduced-motion: reduce) { .menu-card, .menu-card:hover { transition: none; transform: none; } }
 
-header nav a:hover {
-  color: var(--clr-gold);
-  border-bottom-color: var(--clr-gold);
-}
+.menu-card__name { font-size: 1.15rem; line-height: 1.2; margin-bottom: .5rem; }
+.menu-card__description { font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
+.menu-card__price { display: inline-block; font-family: system-ui, sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--price); margin-bottom: 1rem; }
+.menu-card__price::before { content: "ETB "; font-weight: 400; font-size: .85rem; color: var(--muted); letter-spacing: .04em; }
+.menu-card__ingredients { list-style: none; font-family: system-ui, sans-serif; font-size: .85rem; border-top: 1px solid var(--border); padding-top: .5rem; }
+.menu-card__ingredients li { padding: .25rem .5rem; }
+.menu-card__ingredients li:nth-child(even) { background: var(--stripe); }
 
-/* ── Focus ── */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-iframe:focus-visible {
-  outline: 3px solid var(--clr-focus);
-  outline-offset: 3px;
-}
+/* form */
+form { display: grid; gap: .5rem; max-width: 420px; }
+label { font-family: system-ui, sans-serif; font-size: .9rem; font-weight: 600; color: var(--text); }
+input { width: 100%; padding: .5rem 1rem; border: 1px solid var(--border); border-radius: 4px; font-family: Georgia, serif; font-size: 1rem; color: var(--text); background: var(--bg); transition: border-color var(--ease); }
+input:focus { border-color: var(--gold); outline: none; }
+button[type="submit"] { padding: .5rem 1.5rem; background: var(--gold); color: var(--nav-bg); border: none; border-radius: 4px; font-family: system-ui, sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background var(--ease); }
+button[type="submit"]:hover { background: var(--price); color: #fff; }
 
-/* ── Main ── */
-main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: var(--space-xl) var(--space-md);
-}
+/* map */
+#location iframe { width: 100%; max-width: 700px; height: 350px; border-radius: var(--radius); display: block; }
 
-section {
-  margin-bottom: var(--space-xl);
-}
+/* footer */
+footer { text-align: center; padding: 1.5rem; font-family: system-ui, sans-serif; font-size: .85rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--bg); }
 
-section h2 {
-  font-size: 1.4rem;
-  line-height: var(--lh-heading);
-  margin-bottom: var(--space-md);
-  border-bottom: 2px solid var(--clr-gold);
-  padding-bottom: var(--space-xs);
-}
-
-/* Hero image */
-section img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--card-radius);
-}
-
-/* ── Menu grid — #menu is the grid container ── */
-#menu {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-lg);
-}
-
-#menu h2 {
-  grid-column: 1 / -1;
-}
-
-@media (min-width: 600px) {
-  #menu { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 960px) {
-  #menu { grid-template-columns: repeat(3, 1fr); }
-}
-
-/* ── .menu-card ── */
-.menu-card {
-  padding: var(--space-lg);
-  border: 1px solid var(--clr-border);
-  border-top: var(--card-accent) solid var(--clr-gold);
-  border-radius: var(--card-radius);
-  background: var(--clr-bg);
-  box-shadow: var(--card-shadow);
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition),
-    background var(--transition);
-}
-
-.menu-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--card-shadow-hover);
-  background: var(--clr-gold-light);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .menu-card, .menu-card:hover { transition: none; transform: none; }
-}
-
-.menu-card__name {
-  font-size: 1.15rem;
-  line-height: var(--lh-heading);
-  margin-bottom: var(--space-sm);
-}
-
-.menu-card__description {
-  font-size: 0.9rem;
-  color: var(--clr-text-muted);
-  margin-bottom: var(--space-md);
-}
-
-.menu-card__price {
-  display: inline-block;
-  font-family: var(--font-ui);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--clr-price);
-  margin-bottom: var(--space-md);
-}
-
-.menu-card__price::before {
-  content: "ETB ";
-  font-weight: 400;
-  font-size: 0.85rem;
-  color: var(--clr-text-muted);
-  letter-spacing: 0.04em;
-}
-
-.menu-card__ingredients {
-  list-style: none;
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--clr-border);
-  padding-top: var(--space-sm);
-}
-
-.menu-card__ingredients li {
-  padding: var(--space-xs) var(--space-sm);
-}
-
-.menu-card__ingredients li:nth-child(even) {
-  background: var(--clr-stripe);
-}
-
-/* ── Reservation form ── */
-form {
-  display: grid;
-  gap: var(--space-sm);
-  max-width: 420px;
-}
-
-label {
-  font-family: var(--font-ui);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--clr-text);
-}
-
-input {
-  width: 100%;
-  padding: var(--space-sm) var(--space-md);
-  border: 1px solid var(--clr-border);
-  border-radius: 4px;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--clr-text);
-  background: var(--clr-bg);
-  transition: border-color var(--transition);
-}
-
-input:focus { border-color: var(--clr-gold); outline: none; }
-
-button[type="submit"] {
-  padding: var(--space-sm) var(--space-lg);
-  background: var(--clr-gold);
-  color: var(--clr-nav-bg);
-  border: none;
-  border-radius: 4px;
-  font-family: var(--font-ui);
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background var(--transition);
-}
-
-button[type="submit"]:hover { background: var(--clr-price); color: #fff; }
-
-/* ── Map ── */
-#location iframe {
-  width: 100%;
-  max-width: 700px;
-  height: 350px;
-  border-radius: var(--card-radius);
-  display: block;
-}
-
-/* ── Footer ── */
-footer {
-  text-align: center;
-  padding: var(--space-lg);
-  font-family: var(--font-ui);
-  font-size: 0.85rem;
-  color: var(--clr-text-muted);
-  border-top: 1px solid var(--clr-border);
-  background: var(--clr-bg);
-}
-
-/* ── Responsive ── */
 @media (max-width: 480px) {
-  header { padding: var(--space-md); }
-  header nav { gap: var(--space-md); }
+  header { padding: 0 1rem; }
+  header nav { gap: 1rem; }
 }
