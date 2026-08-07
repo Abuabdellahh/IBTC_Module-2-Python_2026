@@ -5,13 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Habesha Eatery – Authentic Ethiopian cuisine in the heart of Addis Ababa. Reserve a table, explore our menu, and find us on Bole Road." />
   <title>Habesha Eatery – Authentic Ethiopian Cuisine</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:        #c9a84c;
+      --gold-light:  #f5e9c8;
+      --bg:          #ffffff;
+      --surface:     #faf7f2;
+      --text:        #1a1a1a;
+      --muted:       #5a5a5a;
+      --border:      #e0d5c1;
+      --stripe:      #f0ebe0;
+      --price:       #8b1a1a;
+      --focus:       #0066cc;
+      --nav-bg:      #1a1a1a;
+      --nav-text:    #ffffff;
+      --badge-bg:    #8b1a1a;
+      --radius:      8px;
+      --accent:      4px;
+      --shadow:      0 2px 8px rgba(0,0,0,.08);
+      --shadow-h:    0 8px 24px rgba(0,0,0,.15);
+      --ease:        0.2s ease;
+    }
+
+    body { font-family: Georgia, serif; line-height: 1.6; color: var(--text); background: var(--surface); }
+    img  { max-width: 100%; height: auto; display: block; }
+
+    /* skip link */
+    .skip-link { position: absolute; top: -100%; left: 1rem; padding: .5rem 1rem; background: var(--nav-bg); color: var(--nav-text); font-family: system-ui,sans-serif; font-weight: 700; border-radius: var(--radius); text-decoration: none; z-index: 9999; }
+    .skip-link:focus { top: 1rem; }
+
+    /* focus */
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+    /* ── Navbar ── */
+    .navbar { display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 64px; background: var(--nav-bg); border-bottom: var(--accent) solid var(--gold); position: sticky; top: 0; z-index: 100; }
+    .navbar__logo { font-family: Georgia, serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); text-decoration: none; letter-spacing: .02em; white-space: nowrap; }
+    .navbar__links { display: flex; gap: 1.5rem; list-style: none; }
+    .navbar__links a { font-family: system-ui,sans-serif; font-size: .95rem; color: var(--nav-text); text-decoration: none; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: color var(--ease), border-color var(--ease); }
+    .navbar__links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── Hero ── */
+    .hero { position: relative; overflow: hidden; }
+    .hero img { width: 100%; height: 320px; object-fit: cover; }
+    .hero__overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: 2rem 1.5rem; background: linear-gradient(to right, rgba(26,26,26,.78) 50%, transparent); color: var(--bg); }
+    .hero__title { font-size: clamp(1.8rem, 5vw, 3.2rem); line-height: 1.2; margin-bottom: .5rem; }
+    .hero__sub { font-size: clamp(.95rem, 2vw, 1.15rem); margin-bottom: 1.5rem; opacity: .9; max-width: 38ch; }
+    .btn { display: inline-block; padding: .5rem 2rem; background: var(--gold); color: var(--nav-bg); font-family: system-ui,sans-serif; font-weight: 700; border-radius: var(--radius); text-decoration: none; transition: background var(--ease); align-self: flex-start; }
+    .btn:hover { background: var(--gold-light); }
+
+    /* ── Main ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+    section { margin-bottom: 3rem; }
+
+    /* ── About ── */
+    .about { display: grid; gap: 2rem; }
+    .about__text h2 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.2; margin-bottom: 1.5rem; border-bottom: 2px solid var(--gold); padding-bottom: .25rem; }
+    .about__text p + p { margin-top: 1rem; }
+    .about__img { border-radius: var(--radius); width: 100%; object-fit: cover; }
+
+    /* ── Menu heading ── */
+    #menu > h2 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.2; margin-bottom: 1.5rem; border-bottom: 2px solid var(--gold); padding-bottom: .25rem; }
+
+    /* ── Menu grid ── */
+    .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+
+    /* ── Menu card ── */
+    .menu-card { position: relative; display: flex; flex-direction: column; border: 1px solid var(--border); border-top: var(--accent) solid var(--gold); border-radius: var(--radius); background: var(--bg); box-shadow: var(--shadow); overflow: hidden; transition: transform var(--ease), box-shadow var(--ease), background var(--ease); }
+    .menu-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-h); background: var(--gold-light); }
+    @media (prefers-reduced-motion: reduce) { .menu-card, .menu-card:hover { transition: none; transform: none; } }
+    .menu-card__img { width: 100%; height: 180px; object-fit: cover; }
+    .menu-card__body { display: flex; flex-direction: column; flex: 1; padding: 1.5rem; }
+    .menu-card__name { font-size: 1.1rem; line-height: 1.2; margin-bottom: .5rem; }
+    .menu-card__description { font-size: .9rem; color: var(--muted); margin-bottom: 1rem; }
+    .menu-card__ingredients { list-style: none; font-family: system-ui,sans-serif; font-size: .82rem; border-top: 1px solid var(--border); padding-top: .5rem; margin-bottom: 1rem; flex: 1; }
+    .menu-card__ingredients li { padding: .25rem .5rem; }
+    .menu-card__ingredients li:nth-child(even) { background: var(--stripe); }
+    .menu-card__price { font-family: system-ui,sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--price); margin-top: auto; }
+    .menu-card__price::before { content: "ETB "; font-weight: 400; font-size: .82rem; color: var(--muted); letter-spacing: .04em; }
+    .badge { position: absolute; top: .5rem; right: .5rem; padding: 2px .6rem; background: var(--badge-bg); color: #fff; font-family: system-ui,sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; border-radius: 20px; }
+
+    /* ── Reservation form ── */
+    #reserve > h2 { font-size: clamp(1.3rem, 2.5vw, 1.6rem); line-height: 1.2; margin-bottom: 1.5rem; border-bottom: 2px solid var(--gold); padding-bottom: .25rem; }
+    .reservation-form { display: grid; gap: 1rem; max-width: 480px; }
+    .form-group { display: grid; gap: .25rem; }
+    label { font-family: system-ui,sans-serif; font-size: .9rem; font-weight: 600; color: var(--text); }
+    label span[aria-hidden] { color: var(--price); margin-left: 2px; }
+    input { width: 100%; padding: .5rem 1rem; border: 1px solid var(--border); border-radius: 4px; font-family: Georgia,serif; font-size: 1rem; color: var(--text); background: var(--bg); transition: border-color var(--ease); }
+    input:focus { border-color: var(--gold); outline: none; }
+    .field-hint { font-family: system-ui,sans-serif; font-size: .8rem; color: var(--muted); }
+    button[type="submit"] { padding: .5rem 2rem; background: var(--gold); color: var(--nav-bg); border: none; border-radius: 4px; font-family: system-ui,sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background var(--ease); justify-self: start; }
+    button[type="submit"]:hover { background: var(--price); color: #fff; }
+
+    /* ── Footer ── */
+    .footer { background: var(--nav-bg); color: var(--nav-text); padding: 3rem 2rem 1.5rem; border-top: var(--accent) solid var(--gold); }
+    .footer__grid { display: grid; grid-template-columns: 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto 2rem; }
+    .footer__col h3 { font-family: system-ui,sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; }
+    .footer__col p, .footer__col address { font-style: normal; font-size: .9rem; line-height: 1.7; color: rgba(255,255,255,.75); }
+    .footer__col a { color: rgba(255,255,255,.75); text-decoration: none; transition: color var(--ease); }
+    .footer__col a:hover { color: var(--gold); }
+    .footer__copy { text-align: center; font-family: system-ui,sans-serif; font-size: .8rem; color: rgba(255,255,255,.4); border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.5rem; max-width: 1100px; margin: 0 auto; }
+
+    /* ── Breakpoints ── */
+    @media (min-width: 600px) {
+      .hero img { height: 420px; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 960px) {
+      .hero img { height: 520px; }
+      .menu-grid { grid-template-columns: repeat(3, 1fr); }
+      .about { grid-template-columns: 1fr 1fr; align-items: center; }
+      .footer__grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .navbar { padding: 0 1rem; }
+      .navbar__logo { font-size: 1.1rem; }
+      .navbar__links { gap: 1rem; }
+      .navbar__links a { font-size: .85rem; }
+    }
+  </style>
 </head>
 <body>
 
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- ── 1. Sticky Navbar ── -->
   <header class="navbar">
     <a class="navbar__logo" href="#hero">Habesha Eatery</a>
     <nav aria-label="Primary navigation">
@@ -26,285 +145,151 @@
 
   <main id="main-content">
 
-    <!-- ── 2. Hero ── -->
+    <!-- Hero -->
     <section id="hero" class="hero" aria-labelledby="hero-heading">
       <div class="hero__overlay">
         <h1 id="hero-heading" class="hero__title">Taste of Ethiopia</h1>
         <p class="hero__sub">Authentic flavours from the heart of Addis Ababa</p>
         <a class="btn" href="#reserve">Reserve a Table</a>
       </div>
-      <img
-        src="images/hero.jpg"
-        alt="A colourful Ethiopian injera spread with doro wat, misir and tibs on a mesob tray"
-        width="1400" height="560"
-        loading="eager"
-      />
+      <img src="images/hero.jpg" alt="A colourful Ethiopian injera spread with doro wat, misir and tibs on a mesob tray" width="1400" height="560" loading="eager" />
     </section>
 
-    <!-- ── 3. About ── -->
+    <!-- About -->
     <section id="about" class="about" aria-labelledby="about-heading">
       <div class="about__text">
         <h2 id="about-heading">Our Story</h2>
-        <p>
-          Founded in 2008 on Bole Road, Habesha Eatery was born from a simple
-          belief: that Ethiopian food — slow-cooked, spice-rich, and meant to be
-          shared — deserves a home worthy of its heritage. Every dish is prepared
-          with hand-ground berbere, house-made niter kibbeh, and injera fermented
-          for 72 hours from 100 % teff.
-        </p>
-        <p>
-          We source directly from smallholder farmers in Tigray, Oromia, and
-          Sidama, keeping traditions alive while supporting the communities that
-          shaped them. Pull up a mesob, tear off a piece of injera, and eat
-          together — the Habesha way.
-        </p>
+        <p>Founded in 2008 on Bole Road, Habesha Eatery was born from a simple belief: that Ethiopian food — slow-cooked, spice-rich, and meant to be shared — deserves a home worthy of its heritage. Every dish is prepared with hand-ground berbere, house-made niter kibbeh, and injera fermented for 72 hours from 100% teff.</p>
+        <p>We source directly from smallholder farmers in Tigray, Oromia, and Sidama, keeping traditions alive while supporting the communities that shaped them. Pull up a mesob, tear off a piece of injera, and eat together — the Habesha way.</p>
       </div>
-      <img
-        class="about__img"
-        src="images/injera.jpg"
-        alt="Freshly baked injera stacked on a traditional mesob basket"
-        width="600" height="420"
-        loading="lazy"
-      />
+      <img class="about__img" src="images/injera.jpg" alt="Freshly baked injera stacked on a traditional mesob basket" width="600" height="420" loading="lazy" />
     </section>
 
-    <!-- ── 4. Menu Grid ── -->
+    <!-- Menu -->
     <section id="menu" aria-labelledby="menu-heading">
       <h2 id="menu-heading">Our Menu</h2>
-
       <div class="menu-grid">
 
-        <!-- Card 1 – Popular -->
         <article class="menu-card menu-card--popular">
           <span class="badge" aria-label="Popular dish">Popular</span>
-          <img
-            class="menu-card__img"
-            src="images/doro-wat.jpg"
-            alt="Doro Wat – chicken drumsticks in rich berbere sauce with a boiled egg"
-            width="400" height="220"
-            loading="lazy"
-          />
+          <img class="menu-card__img" src="images/doro-wat.jpg" alt="Doro Wat – chicken drumsticks in rich berbere sauce with a boiled egg" width="400" height="220" loading="lazy" />
           <div class="menu-card__body">
             <h3 class="menu-card__name">Doro Wat</h3>
-            <p class="menu-card__description">
-              Slow-simmered chicken drumsticks in a rich berbere sauce,
-              served with a hard-boiled egg and injera.
-            </p>
+            <p class="menu-card__description">Slow-simmered chicken drumsticks in a rich berbere sauce, served with a hard-boiled egg and injera.</p>
             <ul class="menu-card__ingredients" aria-label="Key ingredients">
-              <li>Chicken drumsticks</li>
-              <li>Berbere spice blend</li>
-              <li>Niter kibbeh</li>
-              <li>Red onions</li>
-              <li>Hard-boiled egg</li>
-              <li>Injera</li>
+              <li>Chicken drumsticks</li><li>Berbere spice blend</li><li>Niter kibbeh</li>
+              <li>Red onions</li><li>Hard-boiled egg</li><li>Injera</li>
             </ul>
             <span class="menu-card__price">320</span>
           </div>
         </article>
 
-        <!-- Card 2 -->
         <article class="menu-card">
-          <img
-            class="menu-card__img"
-            src="images/injera.jpg"
-            alt="Misir Alicha – mildly spiced red lentils with turmeric"
-            width="400" height="220"
-            loading="lazy"
-          />
+          <img class="menu-card__img" src="images/injera.jpg" alt="Misir Alicha – mildly spiced red lentils" width="400" height="220" loading="lazy" />
           <div class="menu-card__body">
             <h3 class="menu-card__name">Misir Alicha</h3>
-            <p class="menu-card__description">
-              Mildly spiced red lentils cooked with turmeric, garlic and
-              ginger — a vegan favourite.
-            </p>
+            <p class="menu-card__description">Mildly spiced red lentils cooked with turmeric, garlic and ginger — a vegan favourite.</p>
             <ul class="menu-card__ingredients" aria-label="Key ingredients">
-              <li>Red lentils</li>
-              <li>Turmeric</li>
-              <li>Garlic</li>
-              <li>Ginger</li>
-              <li>Onions</li>
-              <li>Injera</li>
+              <li>Red lentils</li><li>Turmeric</li><li>Garlic</li>
+              <li>Ginger</li><li>Onions</li><li>Injera</li>
             </ul>
             <span class="menu-card__price">180</span>
           </div>
         </article>
 
-        <!-- Card 3 -->
         <article class="menu-card">
-          <img
-            class="menu-card__img"
-            src="images/injera.jpg"
-            alt="Tibs Firfir – sautéed beef strips tossed with torn injera"
-            width="400" height="220"
-            loading="lazy"
-          />
+          <img class="menu-card__img" src="images/injera.jpg" alt="Tibs Firfir – sautéed beef strips with torn injera" width="400" height="220" loading="lazy" />
           <div class="menu-card__body">
             <h3 class="menu-card__name">Tibs Firfir</h3>
-            <p class="menu-card__description">
-              Sautéed beef strips tossed with torn injera, rosemary and
-              a hint of mitmita chilli.
-            </p>
+            <p class="menu-card__description">Sautéed beef strips tossed with torn injera, rosemary and a hint of mitmita chilli.</p>
             <ul class="menu-card__ingredients" aria-label="Key ingredients">
-              <li>Beef sirloin</li>
-              <li>Torn injera</li>
-              <li>Rosemary</li>
-              <li>Mitmita chilli</li>
-              <li>Niter kibbeh</li>
-              <li>Tomatoes</li>
+              <li>Beef sirloin</li><li>Torn injera</li><li>Rosemary</li>
+              <li>Mitmita chilli</li><li>Niter kibbeh</li><li>Tomatoes</li>
             </ul>
             <span class="menu-card__price">410</span>
           </div>
         </article>
 
-        <!-- Card 4 -->
         <article class="menu-card">
-          <img
-            class="menu-card__img"
-            src="images/injera.jpg"
-            alt="Shiro Wat – creamy chickpea flour stew"
-            width="400" height="220"
-            loading="lazy"
-          />
+          <img class="menu-card__img" src="images/injera.jpg" alt="Shiro Wat – creamy chickpea flour stew" width="400" height="220" loading="lazy" />
           <div class="menu-card__body">
             <h3 class="menu-card__name">Shiro Wat</h3>
-            <p class="menu-card__description">
-              Creamy chickpea flour stew seasoned with berbere and niter
-              kibbeh — a comforting classic.
-            </p>
+            <p class="menu-card__description">Creamy chickpea flour stew seasoned with berbere and niter kibbeh — a comforting classic.</p>
             <ul class="menu-card__ingredients" aria-label="Key ingredients">
-              <li>Chickpea flour</li>
-              <li>Berbere</li>
-              <li>Niter kibbeh</li>
-              <li>Garlic</li>
-              <li>Onions</li>
-              <li>Injera</li>
+              <li>Chickpea flour</li><li>Berbere</li><li>Niter kibbeh</li>
+              <li>Garlic</li><li>Onions</li><li>Injera</li>
             </ul>
             <span class="menu-card__price">160</span>
           </div>
         </article>
 
-        <!-- Card 5 -->
         <article class="menu-card">
-          <img
-            class="menu-card__img"
-            src="images/injera.jpg"
-            alt="Kitfo – Ethiopian-style minced beef with mitmita"
-            width="400" height="220"
-            loading="lazy"
-          />
+          <img class="menu-card__img" src="images/injera.jpg" alt="Kitfo – Ethiopian-style minced beef" width="400" height="220" loading="lazy" />
           <div class="menu-card__body">
             <h3 class="menu-card__name">Kitfo</h3>
-            <p class="menu-card__description">
-              Ethiopian-style minced beef seasoned with mitmita and niter
-              kibbeh, served raw or lightly cooked.
-            </p>
+            <p class="menu-card__description">Ethiopian-style minced beef seasoned with mitmita and niter kibbeh, served raw or lightly cooked.</p>
             <ul class="menu-card__ingredients" aria-label="Key ingredients">
-              <li>Minced beef</li>
-              <li>Mitmita</li>
-              <li>Niter kibbeh</li>
-              <li>Ayib cheese</li>
-              <li>Gomen greens</li>
-              <li>Injera</li>
+              <li>Minced beef</li><li>Mitmita</li><li>Niter kibbeh</li>
+              <li>Ayib cheese</li><li>Gomen greens</li><li>Injera</li>
             </ul>
             <span class="menu-card__price">480</span>
           </div>
         </article>
 
-        <!-- Card 6 -->
         <article class="menu-card">
-          <img
-            class="menu-card__img"
-            src="images/injera.jpg"
-            alt="Beyaynetu – vegan platter of six stews on injera"
-            width="400" height="220"
-            loading="lazy"
-          />
+          <img class="menu-card__img" src="images/injera.jpg" alt="Beyaynetu – vegan platter of six stews on injera" width="400" height="220" loading="lazy" />
           <div class="menu-card__body">
             <h3 class="menu-card__name">Beyaynetu</h3>
-            <p class="menu-card__description">
-              A colourful vegan platter of six wots and salads arranged on
-              a single large injera — perfect for sharing.
-            </p>
+            <p class="menu-card__description">A colourful vegan platter of six wots and salads on a single large injera — perfect for sharing.</p>
             <ul class="menu-card__ingredients" aria-label="Key ingredients">
-              <li>Misir</li>
-              <li>Gomen</li>
-              <li>Tikil gomen</li>
-              <li>Fosolia</li>
-              <li>Ater kik</li>
-              <li>Injera</li>
+              <li>Misir</li><li>Gomen</li><li>Tikil gomen</li>
+              <li>Fosolia</li><li>Ater kik</li><li>Injera</li>
             </ul>
             <span class="menu-card__price">260</span>
           </div>
         </article>
 
-      </div><!-- /.menu-grid -->
+      </div>
     </section>
 
-    <!-- ── 5. Reservation Form ── -->
+    <!-- Reservation -->
     <section id="reserve" aria-labelledby="reserve-heading">
       <h2 id="reserve-heading">Reserve a Table</h2>
-
-      <form class="reservation-form" action="/reserve" method="post" novalidate>
-
+      <form class="reservation-form" action="#" method="post" novalidate>
         <div class="form-group">
           <label for="full-name">Full Name <span aria-hidden="true">*</span></label>
-          <input
-            id="full-name" name="name" type="text"
-            autocomplete="name" placeholder="Abebe Girma"
-            required aria-required="true"
-          />
+          <input id="full-name" name="name" type="text" autocomplete="name" placeholder="Abebe Girma" required aria-required="true" />
         </div>
-
         <div class="form-group">
           <label for="phone">Phone Number <span aria-hidden="true">*</span></label>
-          <input
-            id="phone" name="tel" type="tel"
-            autocomplete="tel" placeholder="09XXXXXXXX"
-            pattern="09[0-9]{8}"
-            title="Ethiopian mobile number starting with 09 — 10 digits total"
-            required aria-required="true" aria-describedby="phone-hint"
-          />
+          <input id="phone" name="tel" type="tel" autocomplete="tel" placeholder="09XXXXXXXX" pattern="09[0-9]{8}" required aria-required="true" aria-describedby="phone-hint" />
           <span id="phone-hint" class="field-hint">Format: 09XXXXXXXX</span>
         </div>
-
         <div class="form-group">
           <label for="guests">Number of Guests <span aria-hidden="true">*</span></label>
-          <input
-            id="guests" name="guests" type="number"
-            min="1" max="20" placeholder="2"
-            required aria-required="true"
-          />
+          <input id="guests" name="guests" type="number" min="1" max="20" placeholder="2" required aria-required="true" />
         </div>
-
         <div class="form-group">
           <label for="date">Reservation Date <span aria-hidden="true">*</span></label>
-          <input
-            id="date" name="date" type="date"
-            required aria-required="true"
-          />
+          <input id="date" name="date" type="date" required aria-required="true" />
         </div>
-
         <button type="submit">Confirm Reservation</button>
-
       </form>
     </section>
 
   </main>
 
-  <!-- ── 6. Footer ── -->
+  <!-- Footer -->
   <footer id="footer" class="footer">
     <div class="footer__grid">
-
       <div class="footer__col">
         <h3>Habesha Eatery</h3>
         <p>Authentic Ethiopian cuisine<br />since 2008.</p>
       </div>
-
       <address class="footer__col">
         <h3>Location</h3>
         <p>Bole Road, Bole Sub-City<br />Addis Ababa, Ethiopia</p>
       </address>
-
       <div class="footer__col">
         <h3>Contact</h3>
         <p>
@@ -312,15 +297,10 @@
           <a href="mailto:hello@habeshaeatery.et">hello@habeshaeatery.et</a>
         </p>
       </div>
-
       <div class="footer__col">
         <h3>Hours</h3>
-        <p>
-          Mon – Fri: 11 am – 10 pm<br />
-          Sat – Sun: 10 am – 11 pm
-        </p>
+        <p>Mon – Fri: 11 am – 10 pm<br />Sat – Sun: 10 am – 11 pm</p>
       </div>
-
     </div>
     <p class="footer__copy">&copy; 2025 Habesha Eatery. All rights reserved.</p>
   </footer>
