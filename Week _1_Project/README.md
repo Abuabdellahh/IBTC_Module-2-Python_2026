@@ -1,6 +1,6 @@
 # Habesha Eatery — Responsive Static Site
 
-A multi-section marketing website for a real Addis Ababa restaurant, built as the Week 2 project for **CodeOps · Full Stack Software Development** at IBT College Canada.
+A multi-section marketing website for a real Addis Ababa restaurant, built as the Week  project for **CodeOps · Full Stack Software Development** at IBT College Canada.
 
 ## Live Demo
 
