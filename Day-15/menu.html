@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Habesha Eatery – Authentic Ethiopian cuisine in Addis Ababa." />
+  <meta name="description" content="Habesha Eatery – Authentic Ethiopian cuisine menu." />
   <title>Habesha Eatery – Menu</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="menu.css" />
 </head>
 <body>
 
-  <!-- ─── Skip link: first focusable element, jumps past nav ─── -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- ─── Site header ─── -->
   <header>
     <h1>Habesha Eatery</h1>
     <nav aria-label="Site navigation">
@@ -22,11 +20,10 @@
     </nav>
   </header>
 
-  <!-- ─── Main content ─── -->
   <main id="main-content">
 
     <!-- ── Hero ── -->
-    <section aria-labelledby="hero-heading">
+    <section class="hero" aria-labelledby="hero-heading">
       <h2 id="hero-heading">Taste of Ethiopia</h2>
       <img
         src="injera.jpg"
@@ -37,18 +34,9 @@
       />
     </section>
 
-    <!-- ── Menu section ── -->
+    <!-- ── Menu ── -->
     <section id="menu" aria-labelledby="menu-heading">
       <h2 id="menu-heading">Our Menu</h2>
-
-      <!--
-        .menu-card  ─ the component under review
-        Each card has:
-          .menu-card__name        – dish title          (h3)
-          .menu-card__description – short description   (p)
-          .menu-card__price       – numeric price only  (span)  ← ::before adds "ETB "
-          .menu-card__ingredients – ingredient list     (ul)    ← :nth-child(even) zebra
-      -->
 
       <!-- Card 1 -->
       <article class="menu-card">
@@ -104,25 +92,74 @@
         </ul>
       </article>
 
+      <!-- Card 4 -->
+      <article class="menu-card">
+        <h3 class="menu-card__name">Shiro Wat</h3>
+        <p class="menu-card__description">
+          Creamy chickpea flour stew seasoned with berbere and niter kibbeh —
+          a comforting vegan classic.
+        </p>
+        <span class="menu-card__price">160</span>
+        <ul class="menu-card__ingredients" aria-label="Key ingredients">
+          <li>Chickpea flour</li>
+          <li>Berbere</li>
+          <li>Niter kibbeh</li>
+          <li>Garlic</li>
+          <li>Onions</li>
+          <li>Injera</li>
+        </ul>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="menu-card">
+        <h3 class="menu-card__name">Kitfo</h3>
+        <p class="menu-card__description">
+          Ethiopian-style steak tartare seasoned with mitmita and niter kibbeh,
+          served raw or lightly cooked.
+        </p>
+        <span class="menu-card__price">480</span>
+        <ul class="menu-card__ingredients" aria-label="Key ingredients">
+          <li>Lean minced beef</li>
+          <li>Mitmita</li>
+          <li>Niter kibbeh</li>
+          <li>Ayib cheese</li>
+          <li>Gomen greens</li>
+          <li>Injera</li>
+        </ul>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="menu-card">
+        <h3 class="menu-card__name">Beyaynetu</h3>
+        <p class="menu-card__description">
+          A colourful vegan platter of six stews and salads arranged on a
+          single large injera — perfect for sharing.
+        </p>
+        <span class="menu-card__price">290</span>
+        <ul class="menu-card__ingredients" aria-label="Key ingredients">
+          <li>Misir (lentils)</li>
+          <li>Gomen (kale)</li>
+          <li>Tikil gomen</li>
+          <li>Fosolia</li>
+          <li>Ater kik</li>
+          <li>Injera</li>
+        </ul>
+      </article>
+
     </section>
 
     <!-- ── Reservation form ── -->
     <section id="reserve" aria-labelledby="reserve-heading">
       <h2 id="reserve-heading">Reserve a Table</h2>
       <form action="/reserve" method="post" novalidate>
-
         <label for="full-name">Full name</label>
         <input id="full-name" name="name" type="text" required autocomplete="name" />
 
         <label for="phone">Phone number</label>
         <input
-          id="phone"
-          name="tel"
-          type="tel"
-          pattern="09[0-9]{8}"
-          placeholder="09XXXXXXXX"
-          required
-          autocomplete="tel"
+          id="phone" name="tel" type="tel"
+          pattern="09[0-9]{8}" placeholder="09XXXXXXXX"
+          required autocomplete="tel"
         />
 
         <label for="guests">Number of guests</label>
@@ -141,12 +178,9 @@
       <iframe
         title="Habesha Eatery location near Adwa Victory Memorial Park, Addis Ababa"
         src="https://maps.google.com/maps?q=Adwa+Victory+Memorial+Park+Addis+Ababa&output=embed"
-        width="600"
-        height="450"
+        width="600" height="450"
         style="border:0;"
-        allowfullscreen
-        loading="lazy"
-        tabindex="0"
+        allowfullscreen loading="lazy" tabindex="0"
       ></iframe>
     </section>
 

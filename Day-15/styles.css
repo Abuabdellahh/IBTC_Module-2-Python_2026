@@ -127,7 +127,7 @@ iframe:focus-visible {
 
 /* ── 6. Section Layout ──────────────────────────────────────── */
 main {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-xl) var(--space-md);
 }
@@ -153,11 +153,19 @@ section img {
   display: block;
 }
 
-/* Card grid */
+/* Card grid – mobile-first */
 #menu {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: 1fr;          /* 1 col: 360px+ */
   gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  #menu { grid-template-columns: repeat(2, 1fr); }  /* 2 col: tablet */
+}
+
+@media (min-width: 1024px) {
+  #menu { grid-template-columns: repeat(3, 1fr); }  /* 3 col: desktop */
 }
 
 /* The h2 spans the full grid width */
@@ -193,6 +201,11 @@ section img {
     transform var(--transition-speed) ease,
     box-shadow var(--transition-speed) ease,
     background-color var(--transition-speed) ease;
+
+  /* Respect user motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 /* ── 7a. :hover pseudo-class ── */
@@ -201,9 +214,15 @@ section img {
   the card is interactive / selectable.
 */
 .menu-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.02);
   box-shadow: var(--card-shadow-hover);
-  background-color: var(--clr-gold-light);   /* warm tint via var() */
+  background-color: var(--clr-gold-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-card:hover {
+    transform: none;
+  }
 }
 
 /* ── 7b. Card name (h3) ── */

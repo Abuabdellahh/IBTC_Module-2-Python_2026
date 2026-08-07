@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generate targets.png</title>
+  <style>
+    body { margin: 0; background: #f0f0f0; display: flex; flex-direction: column; align-items: center; padding: 24px; font-family: system-ui, sans-serif; }
+    canvas { border: 1px solid #ccc; background: #fff; }
+    p { margin-top: 12px; font-size: 14px; color: #444; }
+    a { display: inline-block; margin-top: 12px; padding: 8px 20px; background: #c9a84c; color: #fff; border-radius: 6px; text-decoration: none; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <canvas id="c" width="900" height="420"></canvas>
+  <p>Right-click the image → <strong>Save image as…</strong> → save as <code>targets.png</code></p>
+  <a id="dl" download="targets.png">⬇ Download targets.png</a>
+
+  <script>
+    const c = document.getElementById('c');
+    const ctx = c.getContext('2d');
+    const W = c.width, H = c.height;
+
+    /* ── helpers ── */
+    const gold   = '#c9a84c';
+    const dark   = '#1a1a1a';
+    const muted  = '#5a5a5a';
+    const border = '#e0d5c1';
+    const bg     = '#faf7f2';
+    const white  = '#ffffff';
+    const stripe = '#f0ebe0';
+
+    function roundRect(x, y, w, h, r, fill, stroke) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+      if (fill)   { ctx.fillStyle = fill;   ctx.fill(); }
+      if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = 1; ctx.stroke(); }
+    }
+
+    function card(x, y, w, h) {
+      roundRect(x, y, w, h, 6, white, border);
+      /* gold top accent */
+      ctx.fillStyle = gold;
+      ctx.fillRect(x, y, w, 4);
+      /* title bar */
+      ctx.fillStyle = dark;
+      ctx.fillRect(x + 10, y + 14, w * 0.55, 8);
+      /* desc lines */
+      ctx.fillStyle = '#ccc';
+      ctx.fillRect(x + 10, y + 30, w * 0.8, 5);
+      ctx.fillRect(x + 10, y + 38, w * 0.65, 5);
+      /* price */
+      ctx.fillStyle = '#8b1a1a';
+      ctx.fillRect(x + 10, y + 50, w * 0.3, 7);
+      /* ingredient rows */
+      const rows = ['#f0ebe0', white, '#f0ebe0', white];
+      rows.forEach((clr, i) => {
+        ctx.fillStyle = clr;
+        ctx.fillRect(x + 10, y + 64 + i * 12, w - 20, 11);
+      });
+    }
+
+    function label(text, x, y, size = 13, color = dark) {
+      ctx.fillStyle = color;
+      ctx.font = `700 ${size}px system-ui, sans-serif`;
+      ctx.fillText(text, x, y);
+    }
+
+    /* ── background ── */
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    /* ── divider ── */
+    ctx.strokeStyle = border;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([6, 4]);
+    ctx.beginPath(); ctx.moveTo(W / 2, 20); ctx.lineTo(W / 2, H - 20); ctx.stroke();
+    ctx.setLineDash([]);
+
+    /* ════════════════════════════════════════
+       LEFT PANEL – Phone (360px) → 1 column
+    ════════════════════════════════════════ */
+    const phoneW = 160, phoneH = 360;
+    const phoneX = 80, phoneY = 40;
+
+    /* phone shell */
+    roundRect(phoneX, phoneY, phoneW, phoneH, 16, '#222', null);
+    /* screen */
+    roundRect(phoneX + 8, phoneY + 20, phoneW - 16, phoneH - 40, 4, bg, null);
+
+    /* header bar */
+    ctx.fillStyle = white;
+    ctx.fillRect(phoneX + 8, phoneY + 20, phoneW - 16, 18);
+    ctx.fillStyle = gold;
+    ctx.fillRect(phoneX + 8, phoneY + 36, phoneW - 16, 2);
+
+    /* single card */
+    card(phoneX + 14, phoneY + 46, phoneW - 28, 130);
+    /* second partial card */
+    roundRect(phoneX + 14, phoneY + 186, phoneW - 28, 80, 6, white, border);
+    ctx.fillStyle = gold; ctx.fillRect(phoneX + 14, phoneY + 186, phoneW - 28, 4);
+    ctx.fillStyle = dark; ctx.fillRect(phoneX + 24, phoneY + 200, 60, 7);
+    ctx.fillStyle = '#ccc'; ctx.fillRect(phoneX + 24, phoneY + 214, 80, 5);
+
+    /* notch */
+    ctx.fillStyle = '#222';
+    roundRect(phoneX + phoneW / 2 - 18, phoneY + 22, 36, 8, 4, '#222', null);
+
+    label('📱 Mobile  360px', phoneX, phoneY + phoneH + 22, 12, muted);
+    label('1 column', phoneX + 20, phoneY + phoneH + 38, 11, gold);
+
+    /* ════════════════════════════════════════
+       RIGHT PANEL – Laptop (1024px) → 3 columns
+    ════════════════════════════════════════ */
+    const lapX = W / 2 + 30, lapY = 50;
+    const lapW = 380, lapH = 240;
+
+    /* laptop lid */
+    roundRect(lapX, lapY, lapW, lapH, 8, '#2a2a2a', null);
+    /* screen */
+    roundRect(lapX + 10, lapY + 10, lapW - 20, lapH - 20, 4, bg, null);
+
+    /* header bar */
+    ctx.fillStyle = white;
+    ctx.fillRect(lapX + 10, lapY + 10, lapW - 20, 16);
+    ctx.fillStyle = gold;
+    ctx.fillRect(lapX + 10, lapY + 24, lapW - 20, 2);
+
+    /* 3 cards side by side */
+    const cw = (lapW - 20 - 16) / 3;
+    [0, 1, 2].forEach(i => {
+      card(lapX + 10 + i * (cw + 8), lapY + 34, cw, 130);
+    });
+
+    /* laptop base */
+    ctx.fillStyle = '#3a3a3a';
+    ctx.beginPath();
+    ctx.moveTo(lapX - 20, lapY + lapH);
+    ctx.lineTo(lapX + lapW + 20, lapY + lapH);
+    ctx.lineTo(lapX + lapW + 40, lapY + lapH + 14);
+    ctx.lineTo(lapX - 40, lapY + lapH + 14);
+    ctx.closePath();
+    ctx.fill();
+
+    label('💻 Desktop  1024px+', lapX, lapY + lapH + 36, 12, muted);
+    label('3 columns', lapX + 120, lapY + lapH + 52, 11, gold);
+
+    /* ── centre title ── */
+    ctx.fillStyle = dark;
+    ctx.font = '600 15px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('Habesha Eatery – Responsive Menu Targets', W / 2, H - 12);
+    ctx.textAlign = 'left';
+
+    /* ── download link ── */
+    document.getElementById('dl').href = c.toDataURL('image/png');
+  </script>
+</body>
+</html>

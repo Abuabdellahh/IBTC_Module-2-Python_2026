@@ -1,0 +1,307 @@
+/* ============================================================
+   menu.css  –  Habesha Eatery
+   Mobile-first · Responsive grid · Animated cards
+   ============================================================ */
+
+
+/* ── 1. Design Tokens ───────────────────────────────────────── */
+:root {
+  --clr-gold:        #c9a84c;
+  --clr-gold-light:  #f5e9c8;
+  --clr-bg:          #ffffff;
+  --clr-surface:     #faf7f2;
+  --clr-text:        #1a1a1a;
+  --clr-text-muted:  #5a5a5a;
+  --clr-border:      #e0d5c1;
+  --clr-stripe:      #f0ebe0;
+  --clr-price:       #8b1a1a;
+  --clr-focus:       #0066cc;
+  --clr-skip-bg:     #1a1a1a;
+  --clr-skip-text:   #ffffff;
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  --font-body:    'Georgia', serif;
+  --font-ui:      system-ui, sans-serif;
+  --lh-body:      1.6;
+  --lh-heading:   1.2;
+
+  --card-radius:       8px;
+  --card-accent-h:     4px;
+  --card-shadow:       0 2px 8px rgba(0, 0, 0, 0.08);
+  --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --transition-speed:  0.25s;
+}
+
+
+/* ── 2. Reset ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ── 3. Base ────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-body);
+  line-height: var(--lh-body);
+  color: var(--clr-text);
+  background-color: var(--clr-surface);
+}
+
+
+/* ── 4. Skip Link ───────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--clr-skip-bg);
+  color: var(--clr-skip-text);
+  font-family: var(--font-ui);
+  font-weight: 700;
+  border-radius: var(--card-radius);
+  text-decoration: none;
+  z-index: 9999;
+}
+.skip-link:focus { top: var(--space-md); }
+
+
+/* ── 5. Header ──────────────────────────────────────────────── */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--clr-bg);
+  border-bottom: var(--card-accent-h) solid var(--clr-gold);
+}
+
+header h1 {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  line-height: var(--lh-heading);
+}
+
+header nav { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+
+header nav a {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  color: var(--clr-price);
+  text-decoration: none;
+}
+header nav a:hover { text-decoration: underline; }
+
+
+/* ── 6. Focus ring ──────────────────────────────────────────── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+iframe:focus-visible {
+  outline: 3px solid var(--clr-focus);
+  outline-offset: 3px;
+}
+
+
+/* ── 7. Main layout ─────────────────────────────────────────── */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+}
+
+section { margin-bottom: var(--space-xl); }
+
+section h2 {
+  font-size: 1.4rem;
+  line-height: var(--lh-heading);
+  margin-bottom: var(--space-md);
+  border-bottom: 2px solid var(--clr-gold);
+  padding-bottom: var(--space-xs);
+}
+
+/* Hero image */
+.hero img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--card-radius);
+  display: block;
+}
+
+
+/* ── 8. Menu grid — MOBILE-FIRST ────────────────────────────── */
+/*
+  Base (360px+)  → 1 column
+  768px+         → 2 columns
+  1024px+        → 3 columns
+*/
+#menu {
+  display: grid;
+  grid-template-columns: 1fr;          /* ← single column on mobile */
+  gap: var(--space-lg);
+}
+
+#menu h2 { grid-column: 1 / -1; }     /* heading always full-width */
+
+@media (min-width: 768px) {
+  #menu { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  #menu { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+/* ── 9. .menu-card component ────────────────────────────────── */
+.menu-card {
+  padding: var(--space-lg);
+  border: 1px solid var(--clr-border);
+  border-top: var(--card-accent-h) solid var(--clr-gold);
+  border-radius: var(--card-radius);
+  background-color: var(--clr-bg);
+  box-shadow: var(--card-shadow);
+
+  /* ── Hover transition ── */
+  transition:
+    transform       var(--transition-speed) ease,
+    box-shadow      var(--transition-speed) ease,
+    background-color var(--transition-speed) ease;
+}
+
+/* prefers-reduced-motion: disable transition on the card itself */
+@media (prefers-reduced-motion: reduce) {
+  .menu-card { transition: none; }
+}
+
+/* ── Hover: lift + scale ── */
+.menu-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--card-shadow-hover);
+  background-color: var(--clr-gold-light);
+}
+
+/* prefers-reduced-motion: keep colour change, remove motion */
+@media (prefers-reduced-motion: reduce) {
+  .menu-card:hover { transform: none; }
+}
+
+
+/* ── 9a. Card name ── */
+.menu-card__name {
+  font-size: 1.15rem;
+  line-height: var(--lh-heading);
+  margin-bottom: var(--space-sm);
+}
+
+/* ── 9b. Description ── */
+.menu-card__description {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+/* ── 9c. Price + ::before currency label ── */
+.menu-card__price {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--clr-price);
+  margin-bottom: var(--space-md);
+}
+
+.menu-card__price::before {
+  content: "ETB ";
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── 9d. Ingredient list + zebra stripe ── */
+.menu-card__ingredients {
+  list-style: none;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--clr-border);
+  padding-top: var(--space-sm);
+}
+
+.menu-card__ingredients li {
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.menu-card__ingredients li:nth-child(even) {
+  background-color: var(--clr-stripe);
+}
+
+
+/* ── 10. Reservation form ───────────────────────────────────── */
+form {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 420px;
+}
+
+label {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--clr-border);
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--clr-text);
+  background: var(--clr-bg);
+}
+
+button[type="submit"] {
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--clr-gold);
+  color: var(--clr-bg);
+  border: none;
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition-speed) ease;
+}
+
+button[type="submit"]:hover { background: var(--clr-price); }
+
+
+/* ── 11. Map iframe ─────────────────────────────────────────── */
+#location iframe {
+  width: 100%;
+  max-width: 700px;
+  height: 350px;
+  border-radius: var(--card-radius);
+  display: block;
+}
+
+
+/* ── 12. Footer ─────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: var(--space-lg);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  border-top: 1px solid var(--clr-border);
+}
