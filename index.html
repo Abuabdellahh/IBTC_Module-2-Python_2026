@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IBT College – CodeOps Module 2 portfolio. Days 11–15 and Week 1 Project by Abuabdellahh." />
+  <title>CodeOps · Module 2 Portfolio</title>
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --gold:       #c9a84c;
+      --gold-light: #f5e9c8;
+      --dark:       #1a1a1a;
+      --surface:    #faf7f2;
+      --bg:         #ffffff;
+      --border:     #e0d5c1;
+      --muted:      #5a5a5a;
+      --price:      #8b1a1a;
+      --focus:      #0066cc;
+      --font-body:  Georgia, serif;
+      --font-ui:    system-ui, sans-serif;
+      --radius:     10px;
+      --shadow:     0 2px 10px rgba(0,0,0,.08);
+      --shadow-h:   0 8px 28px rgba(0,0,0,.14);
+      --transition: 0.2s ease;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { max-width: 100%; height: auto; display: block; }
+    body { font-family: var(--font-ui); line-height: 1.6; color: var(--dark); background: var(--surface); }
+
+    /* ── Focus ── */
+    a:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+    /* ── Header ── */
+    .site-header {
+      background: var(--dark);
+      border-bottom: 4px solid var(--gold);
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+    .site-header__eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .site-header__title {
+      font-family: var(--font-body);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .site-header__sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,.65);
+    }
+    .site-header__meta {
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,.4);
+    }
+    .site-header__meta a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .site-header__meta a:hover { text-decoration: underline; }
+
+    /* ── Main ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Grid ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 540px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .projects-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--gold);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+      text-decoration: none;
+      color: inherit;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-h);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card, .card:hover { transition: none; transform: none; }
+    }
+
+    .card__tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .card__title {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      line-height: 1.25;
+      color: var(--dark);
+    }
+    .card__desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      flex: 1;
+    }
+    .card__skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .pill {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 0.6rem;
+      border-radius: 20px;
+      background: var(--gold-light);
+      color: var(--dark);
+      border: 1px solid var(--border);
+    }
+    .card__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--price);
+      margin-top: 0.25rem;
+    }
+    .card__cta::after { content: "→"; }
+
+    /* ── Featured card (Week project) ── */
+    .card--featured {
+      border-top-color: var(--price);
+      background: linear-gradient(135deg, #fff 70%, #fdf3f3);
+    }
+    .card--featured .card__tag { color: var(--price); }
+    .card--featured .card__cta { color: var(--price); }
+
+    /* ── Footer ── */
+    .site-footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    .site-footer a { color: var(--price); text-decoration: none; }
+    .site-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <p class="site-header__eyebrow">IBT College Canada · CodeOps Full Stack</p>
+    <h1 class="site-header__title">Module 2 — Python &amp; Web</h1>
+    <p class="site-header__sub">Days 11 – 15 · Week 1 Project</p>
+    <p class="site-header__meta">
+      <a href="https://github.com/Abuabdellahh/IBTC_Module-2-Python_2026" target="_blank" rel="noopener">
+        github.com/Abuabdellahh/IBTC_Module-2-Python_2026
+      </a>
+    </p>
+  </header>
+
+  <main>
+
+    <!-- Daily lessons -->
+    <p class="section-label">Daily Lessons</p>
+    <div class="projects-grid">
+
+      <a class="card" href="./Day-11/">
+        <span class="card__tag">Day 11</span>
+        <h2 class="card__title">Semantic HTML</h2>
+        <p class="card__desc">
+          Semantic landmarks, document outline, accessible navigation,
+          and metadata for Habesha Market.
+        </p>
+        <div class="card__skills">
+          <span class="pill">HTML5</span>
+          <span class="pill">Semantics</span>
+          <span class="pill">Accessibility</span>
+        </div>
+        <span class="card__cta">View Project</span>
+      </a>
+
+      <a class="card" href="./Day-12/">
+        <span class="card__tag">Day 12</span>
+        <h2 class="card__title">Forms, Tables &amp; Media</h2>
+        <p class="card__desc">
+          Labelled reservation form with HTML5 validation, accessible menu
+          table, and embedded Google Map.
+        </p>
+        <div class="card__skills">
+          <span class="pill">Forms</span>
+          <span class="pill">Tables</span>
+          <span class="pill">iframe</span>
+        </div>
+        <span class="card__cta">View Project</span>
+      </a>
+
+      <a class="card" href="./Day-13/">
+        <span class="card__tag">Day 13</span>
+        <h2 class="card__title">CSS Box Model &amp; Components</h2>
+        <p class="card__desc">
+          Menu-card component with box model, hover transitions,
+          ::before currency label, and :nth-child zebra stripes.
+        </p>
+        <div class="card__skills">
+          <span class="pill">CSS</span>
+          <span class="pill">Box Model</span>
+          <span class="pill">Pseudo-elements</span>
+        </div>
+        <span class="card__cta">View Project</span>
+      </a>
+
+      <a class="card" href="./Day-14/">
+        <span class="card__tag">Day 14</span>
+        <h2 class="card__title">CSS Grid &amp; Flexbox Layout</h2>
+        <p class="card__desc">
+          Full page skeleton with CSS Grid rows, sticky Flexbox navbar,
+          hero overlay, and auto-fit menu grid.
+        </p>
+        <div class="card__skills">
+          <span class="pill">CSS Grid</span>
+          <span class="pill">Flexbox</span>
+          <span class="pill">Sticky Nav</span>
+        </div>
+        <span class="card__cta">View Project</span>
+      </a>
+
+      <a class="card" href="./Day-15/">
+        <span class="card__tag">Day 15</span>
+        <h2 class="card__title">Responsive &amp; Mobile-First</h2>
+        <p class="card__desc">
+          Mobile-first breakpoints, animated card grid that reflows
+          1 → 2 → 3 columns, and prefers-reduced-motion support.
+        </p>
+        <div class="card__skills">
+          <span class="pill">Responsive</span>
+          <span class="pill">Media Queries</span>
+          <span class="pill">Animations</span>
+        </div>
+        <span class="card__cta">View Project</span>
+      </a>
+
+    </div>
+
+    <!-- Week project -->
+    <p class="section-label">Week 1 Project</p>
+    <div class="projects-grid">
+
+      <a class="card card--featured" href="./Week_1_Project/">
+        <span class="card__tag">Week 1 · Capstone</span>
+        <h2 class="card__title">Habesha Eatery — Full Responsive Site</h2>
+        <p class="card__desc">
+          Complete multi-section marketing site: sticky navbar, hero with
+          clamp() fluid type, about section, auto-fit menu grid, reservation
+          form with validation, and a 4-column footer. Works from 360 px to
+          1280 px.
+        </p>
+        <div class="card__skills">
+          <span class="pill">HTML5</span>
+          <span class="pill">CSS Grid</span>
+          <span class="pill">Flexbox</span>
+          <span class="pill">clamp()</span>
+          <span class="pill">Forms</span>
+          <span class="pill">Responsive</span>
+          <span class="pill">Accessibility</span>
+        </div>
+        <span class="card__cta">View Project</span>
+      </a>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      &copy; 2025 &nbsp;·&nbsp;
+      <a href="https://github.com/Abuabdellahh" target="_blank" rel="noopener">Abuabdellahh</a>
+      &nbsp;·&nbsp; IBT College Canada
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Habesha Eatery – Day 15: responsive menu grid, mobile-first layout, animated cards." />
+  <title>Day 15 – Responsive Menu Grid · Habesha Eatery</title>
+  <link rel="stylesheet" href="menu.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <h1>Habesha Eatery</h1>
+    <nav aria-label="Site navigation">
+      <a href="#menu">Menu</a>
+      <a href="#reserve">Reserve</a>
+      <a href="#location">Location</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <h2 id="hero-heading">Taste of Ethiopia</h2>
+      <img
+        src="injera.jpg"
+        alt="A large injera flatbread topped with colourful lentil and vegetable stews"
+        width="1200" height="420"
+        loading="lazy"
+      />
+    </section>
+
+    <!-- Menu -->
+    <section id="menu" aria-labelledby="menu-heading">
+      <h2 id="menu-heading">Our Menu</h2>
+
+      <article class="menu-card">
+        <h3 class="menu-card__name">Doro Wat</h3>
+        <p class="menu-card__description">
+          Slow-simmered chicken drumsticks in a rich berbere sauce,
+          served with a hard-boiled egg and injera.
+        </p>
+        <span class="menu-card__price">320</span>
+        <ul class="menu-card__ingredients" aria-label="Key ingredients">
+          <li>Chicken drumsticks</li>
+          <li>Berbere spice blend</li>
+          <li>Niter kibbeh</li>
+          <li>Red onions</li>
+          <li>Hard-boiled egg</li>
+          <li>Injera</li>
+        </ul>
+      </article>
+
+      <article class="menu-card">
+        <h3 class="menu-card__name">Misir Alicha</h3>
+        <p class="menu-card__description">
+          Mildly spiced red lentils cooked with turmeric, garlic and ginger —
+          a vegan favourite.
+        </p>
+        <span class="menu-card__price">180</span>
+        <ul class="menu-card__ingredients" aria-label="Key ingredients">
+          <li>Red lentils</li>
+          <li>Turmeric</li>
+          <li>Garlic</li>
+          <li>Ginger</li>
+          <li>Onions</li>
+          <li>Injera</li>
+        </ul>
+      </article>
+
+      <article class="menu-card">
+        <h3 class="menu-card__name">Tibs Firfir</h3>
+        <p class="menu-card__description">
+          Sautéed beef strips tossed with torn injera, rosemary and
+          a hint of mitmita chilli.
+        </p>
+        <span class="menu-card__price">410</span>
+        <ul class="menu-card__ingredients" aria-label="Key ingredients">
+          <li>Beef sirloin</li>
+          <li>Torn injera</li>
+          <li>Rosemary</li>
+          <li>Mitmita chilli</li>
+          <li>Niter kibbeh</li>
+          <li>Tomatoes</li>
+        </ul>
+      </article>
+
+      <article class="menu-card">
+        <h3 class="menu-card__name">Shiro Wat</h3>
+        <p class="menu-card__description">
+          Creamy chickpea flour stew seasoned with berbere and niter kibbeh —
+          a comforting vegan classic.
+        </p>
+        <span class="menu-card__price">160</span>
+        <ul class="menu-card__ingredients" aria-label="Key ingredients">
+          <li>Chickpea flour</li>
+          <li>Berbere</li>
+          <li>Niter kibbeh</li>
+          <li>Garlic</li>
+          <li>Onions</li>
+          <li>Injera</li>
+        </ul>
+      </article>
+
+      <article class="menu-card">
+        <h3 class="menu-card__name">Kitfo</h3>
+        <p class="menu-card__description">
+          Ethiopian-style steak tartare seasoned with mitmita and niter kibbeh,
+          served raw or lightly cooked.
+        </p>
+        <span class="menu-card__price">480</span>
+        <ul class="menu-card__ingredients" aria-label="Key ingredients">
+          <li>Lean minced beef</li>
+          <li>Mitmita</li>
+          <li>Niter kibbeh</li>
+          <li>Ayib cheese</li>
+          <li>Gomen greens</li>
+          <li>Injera</li>
+        </ul>
+      </article>
+
+      <article class="menu-card">
+        <h3 class="menu-card__name">Beyaynetu</h3>
+        <p class="menu-card__description">
+          A colourful vegan platter of six stews and salads arranged on a
+          single large injera — perfect for sharing.
+        </p>
+        <span class="menu-card__price">290</span>
+        <ul class="menu-card__ingredients" aria-label="Key ingredients">
+          <li>Misir (lentils)</li>
+          <li>Gomen (kale)</li>
+          <li>Tikil gomen</li>
+          <li>Fosolia</li>
+          <li>Ater kik</li>
+          <li>Injera</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <!-- Reservation form -->
+    <section id="reserve" aria-labelledby="reserve-heading">
+      <h2 id="reserve-heading">Reserve a Table</h2>
+      <form action="/reserve" method="post" novalidate>
+        <label for="full-name">Full name</label>
+        <input id="full-name" name="name" type="text" required autocomplete="name" />
+
+        <label for="phone">Phone number</label>
+        <input id="phone" name="tel" type="tel"
+          pattern="09[0-9]{8}" placeholder="09XXXXXXXX"
+          required autocomplete="tel" />
+
+        <label for="guests">Number of guests</label>
+        <input id="guests" name="guests" type="number" min="1" max="20" required />
+
+        <label for="date">Date</label>
+        <input id="date" name="date" type="date" required />
+
+        <button type="submit">Reserve</button>
+      </form>
+    </section>
+
+    <!-- Location -->
+    <section id="location" aria-labelledby="location-heading">
+      <h2 id="location-heading">Find Us</h2>
+      <iframe
+        title="Habesha Eatery location near Adwa Victory Memorial Park, Addis Ababa"
+        src="https://maps.google.com/maps?q=Adwa+Victory+Memorial+Park+Addis+Ababa&output=embed"
+        width="600" height="450"
+        style="border:0;"
+        allowfullscreen loading="lazy" tabindex="0"
+      ></iframe>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Habesha Eatery. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

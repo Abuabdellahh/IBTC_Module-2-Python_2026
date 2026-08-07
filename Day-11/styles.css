@@ -1,0 +1,69 @@
+/* Day-11 – base styles */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #c9a84c;
+  --dark: #1a1a1a;
+  --surface: #faf7f2;
+  --border: #e0d5c1;
+  --muted: #5a5a5a;
+  --font-body: Georgia, serif;
+  --font-ui: system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--dark);
+  background: var(--surface);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: var(--dark);
+  border-bottom: 4px solid var(--gold);
+}
+
+header h1 {
+  font-size: 1.4rem;
+  color: var(--gold);
+}
+
+header nav ul { display: flex; gap: 1.5rem; list-style: none; }
+header nav a { color: #fff; text-decoration: none; font-family: var(--font-ui); font-size: 0.95rem; }
+header nav a:hover { color: var(--gold); }
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+section, article { margin-bottom: 2rem; }
+
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 0.25rem;
+}
+
+ul { padding-left: 1.5rem; }
+li { margin-bottom: 0.4rem; }
+p { margin-bottom: 0.75rem; }
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+
+a:focus-visible { outline: 3px solid #0066cc; outline-offset: 3px; }
