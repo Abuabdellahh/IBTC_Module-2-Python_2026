@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Habesha Eatery – Authentic Ethiopian cuisine in the heart of Addis Ababa. Reserve a table, explore our menu, and find us on Bole Road." />
+  <title>Habesha Eatery – Authentic Ethiopian Cuisine</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ── 1. Sticky Navbar ── -->
+  <header class="navbar">
+    <a class="navbar__logo" href="#hero">Habesha Eatery</a>
+    <nav aria-label="Primary navigation">
+      <ul class="navbar__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#reserve">Reserve</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ── 2. Hero ── -->
+    <section id="hero" class="hero" aria-labelledby="hero-heading">
+      <div class="hero__overlay">
+        <h1 id="hero-heading" class="hero__title">Taste of Ethiopia</h1>
+        <p class="hero__sub">Authentic flavours from the heart of Addis Ababa</p>
+        <a class="btn" href="#reserve">Reserve a Table</a>
+      </div>
+      <img
+        src="images/hero.jpg"
+        alt="A colourful Ethiopian injera spread with doro wat, misir and tibs on a mesob tray"
+        width="1400" height="560"
+        loading="eager"
+      />
+    </section>
+
+    <!-- ── 3. About ── -->
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <div class="about__text">
+        <h2 id="about-heading">Our Story</h2>
+        <p>
+          Founded in 2008 on Bole Road, Habesha Eatery was born from a simple
+          belief: that Ethiopian food — slow-cooked, spice-rich, and meant to be
+          shared — deserves a home worthy of its heritage. Every dish is prepared
+          with hand-ground berbere, house-made niter kibbeh, and injera fermented
+          for 72 hours from 100 % teff.
+        </p>
+        <p>
+          We source directly from smallholder farmers in Tigray, Oromia, and
+          Sidama, keeping traditions alive while supporting the communities that
+          shaped them. Pull up a mesob, tear off a piece of injera, and eat
+          together — the Habesha way.
+        </p>
+      </div>
+      <img
+        class="about__img"
+        src="images/injera.jpg"
+        alt="Freshly baked injera stacked on a traditional mesob basket"
+        width="600" height="420"
+        loading="lazy"
+      />
+    </section>
+
+    <!-- ── 4. Menu Grid ── -->
+    <section id="menu" aria-labelledby="menu-heading">
+      <h2 id="menu-heading">Our Menu</h2>
+
+      <div class="menu-grid">
+
+        <!-- Card 1 – Popular -->
+        <article class="menu-card menu-card--popular">
+          <span class="badge" aria-label="Popular dish">Popular</span>
+          <img
+            class="menu-card__img"
+            src="images/doro-wat.jpg"
+            alt="Doro Wat – chicken drumsticks in rich berbere sauce with a boiled egg"
+            width="400" height="220"
+            loading="lazy"
+          />
+          <div class="menu-card__body">
+            <h3 class="menu-card__name">Doro Wat</h3>
+            <p class="menu-card__description">
+              Slow-simmered chicken drumsticks in a rich berbere sauce,
+              served with a hard-boiled egg and injera.
+            </p>
+            <ul class="menu-card__ingredients" aria-label="Key ingredients">
+              <li>Chicken drumsticks</li>
+              <li>Berbere spice blend</li>
+              <li>Niter kibbeh</li>
+              <li>Red onions</li>
+              <li>Hard-boiled egg</li>
+              <li>Injera</li>
+            </ul>
+            <span class="menu-card__price">320</span>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="menu-card">
+          <img
+            class="menu-card__img"
+            src="images/injera.jpg"
+            alt="Misir Alicha – mildly spiced red lentils with turmeric"
+            width="400" height="220"
+            loading="lazy"
+          />
+          <div class="menu-card__body">
+            <h3 class="menu-card__name">Misir Alicha</h3>
+            <p class="menu-card__description">
+              Mildly spiced red lentils cooked with turmeric, garlic and
+              ginger — a vegan favourite.
+            </p>
+            <ul class="menu-card__ingredients" aria-label="Key ingredients">
+              <li>Red lentils</li>
+              <li>Turmeric</li>
+              <li>Garlic</li>
+              <li>Ginger</li>
+              <li>Onions</li>
+              <li>Injera</li>
+            </ul>
+            <span class="menu-card__price">180</span>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="menu-card">
+          <img
+            class="menu-card__img"
+            src="images/injera.jpg"
+            alt="Tibs Firfir – sautéed beef strips tossed with torn injera"
+            width="400" height="220"
+            loading="lazy"
+          />
+          <div class="menu-card__body">
+            <h3 class="menu-card__name">Tibs Firfir</h3>
+            <p class="menu-card__description">
+              Sautéed beef strips tossed with torn injera, rosemary and
+              a hint of mitmita chilli.
+            </p>
+            <ul class="menu-card__ingredients" aria-label="Key ingredients">
+              <li>Beef sirloin</li>
+              <li>Torn injera</li>
+              <li>Rosemary</li>
+              <li>Mitmita chilli</li>
+              <li>Niter kibbeh</li>
+              <li>Tomatoes</li>
+            </ul>
+            <span class="menu-card__price">410</span>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="menu-card">
+          <img
+            class="menu-card__img"
+            src="images/injera.jpg"
+            alt="Shiro Wat – creamy chickpea flour stew"
+            width="400" height="220"
+            loading="lazy"
+          />
+          <div class="menu-card__body">
+            <h3 class="menu-card__name">Shiro Wat</h3>
+            <p class="menu-card__description">
+              Creamy chickpea flour stew seasoned with berbere and niter
+              kibbeh — a comforting classic.
+            </p>
+            <ul class="menu-card__ingredients" aria-label="Key ingredients">
+              <li>Chickpea flour</li>
+              <li>Berbere</li>
+              <li>Niter kibbeh</li>
+              <li>Garlic</li>
+              <li>Onions</li>
+              <li>Injera</li>
+            </ul>
+            <span class="menu-card__price">160</span>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="menu-card">
+          <img
+            class="menu-card__img"
+            src="images/injera.jpg"
+            alt="Kitfo – Ethiopian-style minced beef with mitmita"
+            width="400" height="220"
+            loading="lazy"
+          />
+          <div class="menu-card__body">
+            <h3 class="menu-card__name">Kitfo</h3>
+            <p class="menu-card__description">
+              Ethiopian-style minced beef seasoned with mitmita and niter
+              kibbeh, served raw or lightly cooked.
+            </p>
+            <ul class="menu-card__ingredients" aria-label="Key ingredients">
+              <li>Minced beef</li>
+              <li>Mitmita</li>
+              <li>Niter kibbeh</li>
+              <li>Ayib cheese</li>
+              <li>Gomen greens</li>
+              <li>Injera</li>
+            </ul>
+            <span class="menu-card__price">480</span>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="menu-card">
+          <img
+            class="menu-card__img"
+            src="images/injera.jpg"
+            alt="Beyaynetu – vegan platter of six stews on injera"
+            width="400" height="220"
+            loading="lazy"
+          />
+          <div class="menu-card__body">
+            <h3 class="menu-card__name">Beyaynetu</h3>
+            <p class="menu-card__description">
+              A colourful vegan platter of six wots and salads arranged on
+              a single large injera — perfect for sharing.
+            </p>
+            <ul class="menu-card__ingredients" aria-label="Key ingredients">
+              <li>Misir</li>
+              <li>Gomen</li>
+              <li>Tikil gomen</li>
+              <li>Fosolia</li>
+              <li>Ater kik</li>
+              <li>Injera</li>
+            </ul>
+            <span class="menu-card__price">260</span>
+          </div>
+        </article>
+
+      </div><!-- /.menu-grid -->
+    </section>
+
+    <!-- ── 5. Reservation Form ── -->
+    <section id="reserve" aria-labelledby="reserve-heading">
+      <h2 id="reserve-heading">Reserve a Table</h2>
+
+      <form class="reservation-form" action="/reserve" method="post" novalidate>
+
+        <div class="form-group">
+          <label for="full-name">Full Name <span aria-hidden="true">*</span></label>
+          <input
+            id="full-name" name="name" type="text"
+            autocomplete="name" placeholder="Abebe Girma"
+            required aria-required="true"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number <span aria-hidden="true">*</span></label>
+          <input
+            id="phone" name="tel" type="tel"
+            autocomplete="tel" placeholder="09XXXXXXXX"
+            pattern="09[0-9]{8}"
+            title="Ethiopian mobile number starting with 09 — 10 digits total"
+            required aria-required="true" aria-describedby="phone-hint"
+          />
+          <span id="phone-hint" class="field-hint">Format: 09XXXXXXXX</span>
+        </div>
+
+        <div class="form-group">
+          <label for="guests">Number of Guests <span aria-hidden="true">*</span></label>
+          <input
+            id="guests" name="guests" type="number"
+            min="1" max="20" placeholder="2"
+            required aria-required="true"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="date">Reservation Date <span aria-hidden="true">*</span></label>
+          <input
+            id="date" name="date" type="date"
+            required aria-required="true"
+          />
+        </div>
+
+        <button type="submit">Confirm Reservation</button>
+
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ── 6. Footer ── -->
+  <footer id="footer" class="footer">
+    <div class="footer__grid">
+
+      <div class="footer__col">
+        <h3>Habesha Eatery</h3>
+        <p>Authentic Ethiopian cuisine<br />since 2008.</p>
+      </div>
+
+      <address class="footer__col">
+        <h3>Location</h3>
+        <p>Bole Road, Bole Sub-City<br />Addis Ababa, Ethiopia</p>
+      </address>
+
+      <div class="footer__col">
+        <h3>Contact</h3>
+        <p>
+          <a href="tel:+251910999967">+251 910 999 967</a><br />
+          <a href="mailto:hello@habeshaeatery.et">hello@habeshaeatery.et</a>
+        </p>
+      </div>
+
+      <div class="footer__col">
+        <h3>Hours</h3>
+        <p>
+          Mon – Fri: 11 am – 10 pm<br />
+          Sat – Sun: 10 am – 11 pm
+        </p>
+      </div>
+
+    </div>
+    <p class="footer__copy">&copy; 2025 Habesha Eatery. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
