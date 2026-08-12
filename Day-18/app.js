@@ -1,28 +1,26 @@
-// app.js — entry point: imports data and logic, prints the report
+import { transactions } from "./transactions.js";
+import { totalByType, netBalance, buildReceipts, correctAmount } from "./report.js";
 
-import { transactions, correctedTx } from "./transactions.js";
-import { totalByType, buildReceipts, correctAmount } from "./report.js";
+const LINE  = "───────────────────────────────────────";
+const THICK = "═══════════════════════════════════════";
 
-// ── Report Header ────────────────────────────────────────────
-console.log("═══════════════════════════════════════");
+console.log(THICK);
 console.log("     TeleBirr Transaction Report       ");
-console.log("═══════════════════════════════════════");
+console.log(THICK);
 
-// ── Receipts (map + destructuring) ──────────────────────────
+// map + destructuring: one receipt per transaction
 buildReceipts(transactions).forEach((line) => console.log(line));
 
-// ── Totals (filter + reduce) ─────────────────────────────────
-console.log("───────────────────────────────────────");
-console.log(`Total Credits : ${totalByType(transactions, "credit")} ETB`);
-console.log(`Total Debits  : ${totalByType(transactions, "debit")}  ETB`);
+// filter + reduce: totals
+console.log(LINE);
+console.log(`Credits : ${totalByType(transactions, "credit")} ETB`);
+console.log(`Debits  : ${totalByType(transactions, "debit")} ETB`);
+console.log(`Net     : ${netBalance(transactions)} ETB`);
 
-// ── Spread demo: corrected transaction ───────────────────────
-console.log("───────────────────────────────────────");
-console.log("Original tx #3 :", transactions[2]);
-console.log("Corrected tx #3:", correctedTx);
-
-// correctAmount used inline — original still unchanged
-const fixed = correctAmount(transactions[4], 300);
-console.log("Inline fix tx #5:", fixed);
-console.log("Original tx #5 :", transactions[4]);
-console.log("═══════════════════════════════════════");
+// spread: corrected copy — original unchanged
+console.log(LINE);
+const original  = transactions[2];
+const corrected = correctAmount(original, 200);
+console.log("Original :", original);
+console.log("Corrected:", corrected);
+console.log(THICK);
