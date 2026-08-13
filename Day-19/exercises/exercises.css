@@ -1,0 +1,57 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 2rem 1rem;
+  max-width: 640px;
+  margin-inline: auto;
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1c2321;
+  background: #f6f7f5;
+}
+
+h1 { color: #1b7a3d; }
+.hint { color: #6b7472; font-size: .9rem; }
+
+.ex {
+  background: #fff;
+  border: 1px solid #e4e7e3;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+.ex h2 { margin-top: 0; font-size: 1.05rem; color: #6b7472; }
+
+button {
+  cursor: pointer;
+  border: 1px solid #cdd2ce;
+  background: #fff;
+  border-radius: 6px;
+  padding: .35rem .7rem;
+  font-size: .95rem;
+}
+button[type="submit"], #ex1-btn { background: #1b7a3d; color: #fff; border-color: #1b7a3d; }
+
+/* Exercise 1 — the class we toggle. Styling lives here, not inline. */
+.highlight { color: #d1332e; background: #fff3cd; padding: .1rem .4rem; border-radius: 4px; }
+
+/* Exercise 3 — visualise the bubbling target */
+.wrapper { padding: 1rem; border: 2px dashed #cdd2ce; border-radius: 8px; }
+
+ul { list-style: none; padding: 0; }
+#ex4-list li, #ex5-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+  padding: .4rem .6rem;
+  border: 1px solid #e4e7e3;
+  border-radius: 6px;
+  margin-bottom: .4rem;
+  background: #fff;
+}
+.del { color: #d1332e; border-color: #f0c4c2; }
+
+input { padding: .4rem .6rem; border: 1px solid #cdd2ce; border-radius: 6px; font-size: 1rem; }
+#ex5-form { display: flex; gap: .5rem; margin-bottom: .75rem; }
+#ex5-form input { flex: 1; }

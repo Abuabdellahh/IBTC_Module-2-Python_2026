@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 19 — DOM Warm-up Exercises</title>
+  <link rel="stylesheet" href="exercises.css" />
+</head>
+<body>
+  <h1 id="page-title">Day 19 — DOM Warm-up</h1>
+  <p class="hint">Open the browser console (F12) to see the logs from exercises 3.</p>
+
+  <!-- ── Exercise 1: textContent + classList.toggle ── -->
+  <section class="ex">
+    <h2>1. Change text &amp; toggle a class</h2>
+    <h1 id="ex1-heading">Original heading</h1>
+    <button id="ex1-btn" type="button">Change text &amp; toggle .highlight</button>
+  </section>
+
+  <!-- ── Exercise 2: createElement for an array of cities ── -->
+  <section class="ex">
+    <h2>2. Build &lt;li&gt; from an array</h2>
+    <ul id="ex2-cities"></ul>
+  </section>
+
+  <!-- ── Exercise 3: click listener + bubbling ── -->
+  <section class="ex">
+    <h2>3. Click listener &amp; event bubbling</h2>
+    <div id="ex3-wrapper" class="wrapper">
+      <button id="ex3-btn" type="button">Click me (watch the console)</button>
+    </div>
+  </section>
+
+  <!-- ── Exercise 4: delegated delete ── -->
+  <section class="ex">
+    <h2>4. Delete via one delegated listener</h2>
+    <ul id="ex4-list">
+      <li>Injera <button class="del" type="button">Delete</button></li>
+      <li>Berbere <button class="del" type="button">Delete</button></li>
+      <li>Shiro <button class="del" type="button">Delete</button></li>
+    </ul>
+  </section>
+
+  <!-- ── Exercise 5: form submit → append → clear ── -->
+  <section class="ex">
+    <h2>5. Add from a form</h2>
+    <form id="ex5-form" autocomplete="off">
+      <input id="ex5-input" type="text" placeholder="Type an item…" />
+      <button type="submit">Add</button>
+    </form>
+    <ul id="ex5-list"></ul>
+  </section>
+
+  <script src="exercises.js"></script>
+</body>
+</html>
