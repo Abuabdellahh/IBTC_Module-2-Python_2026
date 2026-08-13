@@ -1,0 +1,35 @@
+body {
+  font-family: sans-serif;
+  padding: 2rem;
+}
+
+button {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+/* classes toggled by JS */
+.active {
+  background: #fef3c7;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.hidden {
+  display: none;
+}
+
+.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+#log {
+  margin-top: 2rem;
+  background: #f1f5f9;
+  padding: 1rem;
+  border-radius: 6px;
+  white-space: pre-line;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
