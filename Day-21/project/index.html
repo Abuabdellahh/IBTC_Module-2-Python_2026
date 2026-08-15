@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Addis Signup</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="card">
+      <h1>Addis Market</h1>
+      <p id="signup-count"></p>
+
+      <form id="signup">
+        <label for="name">Full name</label>
+        <input id="name" type="text" placeholder="e.g. Almaz Tadesse" />
+
+        <label for="phone">Phone</label>
+        <input id="phone" type="tel" placeholder="e.g. 0912345678" />
+
+        <p id="error" role="alert"></p>
+
+        <button type="submit">Sign Up</button>
+      </form>
+
+      <div id="entries"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
