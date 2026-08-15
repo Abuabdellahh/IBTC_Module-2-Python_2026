@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day 20 — Async / Fetch Assignment</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <h1>Day 20: Promises, async/await, fetch</h1>
+      </header>
+
+      <section class="card">
+        <h2>1) USD → ETB rate</h2>
+        <button id="rate-btn" type="button">Fetch USD → ETB rate</button>
+        <p id="rate-output" class="output">Waiting…</p>
+      </section>
+
+      <section class="card">
+        <h2>2) .then chain rewritten with async/await</h2>
+        <button id="then-btn" type="button">Load todo data</button>
+        <div id="then-output" class="output">Waiting…</div>
+      </section>
+
+      <section class="card">
+        <h2>3) Network errors + 404 handling</h2>
+        <button id="error-btn" type="button">Run error demo</button>
+        <div id="error-output" class="output">Waiting…</div>
+      </section>
+
+      <section class="card">
+        <h2>4) Promise.all for first two details</h2>
+        <button id="all-btn" type="button">Fetch first two details</button>
+        <ul id="all-output" class="output list-output">Waiting…</ul>
+      </section>
+
+      <section class="card network-demo">
+        <h2>5) Loading / success / error states</h2>
+        <button id="toggle-network" type="button">Toggle network: online</button>
+        <div id="network-demo" class="output">Waiting…</div>
+      </section>
+
+      <section class="card country-card">
+        <h2>Mini-project: Country Facts</h2>
+        <label for="country-input">Country name</label>
+        <div class="search-row">
+          <input id="country-input" type="text" value="ethiopia" placeholder="Enter a country" />
+          <button id="search-btn" type="button">Search</button>
+        </div>
+        <div id="facts" class="facts-output" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

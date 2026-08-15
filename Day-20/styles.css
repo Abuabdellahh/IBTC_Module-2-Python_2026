@@ -1,0 +1,165 @@
+:root {
+  --bg: #f3f6fb;
+  --card: #ffffff;
+  --line: #dfe7f5;
+  --text: #1f2a37;
+  --muted: #64748b;
+  --primary: #2563eb;
+  --primary-soft: #dbeafe;
+  --danger: #dc2626;
+  --success: #15803d;
+  --warning: #d97706;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #eef5ff, #f8fafc);
+  color: var(--text);
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.topbar {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+h1, h2 {
+  margin-top: 0;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+.output {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  line-height: 1.5;
+  min-height: 48px;
+}
+
+.list-output {
+  list-style: none;
+  padding-left: 14px;
+}
+
+.list-output li {
+  margin-bottom: 8px;
+}
+
+.country-card label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font-size: 16px;
+}
+
+.facts-output {
+  display: grid;
+  gap: 12px;
+}
+
+.fact-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.fact-label {
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.fact-value {
+  font-weight: 600;
+  text-align: right;
+}
+
+.flag-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  background: #f8fafc;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.flag-box img {
+  max-width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.error {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.success {
+  color: var(--success);
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .search-row,
+  .fact-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fact-value {
+    text-align: left;
+  }
+}
