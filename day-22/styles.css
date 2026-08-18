@@ -1,0 +1,364 @@
+/* ============================================================
+   Birr Watch — styles.css
+   Ethiopian-themed colour palette
+   Green  #078930  Yellow #FCDD09  Red #DA121A
+   ============================================================ */
+
+/* ── Reset & base ──────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --clr-green:      #078930;
+  --clr-green-dark: #055e20;
+  --clr-yellow:     #FCDD09;
+  --clr-red:        #DA121A;
+  --clr-bg:         #f4f6f8;
+  --clr-surface:    #ffffff;
+  --clr-border:     #dde1e7;
+  --clr-text:       #1a1a2e;
+  --clr-muted:      #6b7280;
+  --clr-success:    #078930;
+  --clr-error:      #DA121A;
+  --clr-warning:    #b45309;
+  --radius:         12px;
+  --shadow:         0 2px 12px rgba(0, 0, 0, 0.08);
+  --transition:     0.2s ease;
+  --font:           'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* ── Layout wrapper ────────────────────────────────────────── */
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.header {
+  background: linear-gradient(135deg, var(--clr-green) 0%, var(--clr-green-dark) 100%);
+  color: #fff;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 2rem 1.5rem 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.header__flag { font-size: 2rem; }
+
+.header__title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.header__subtitle {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Status line ───────────────────────────────────────────── */
+.status {
+  font-size: 0.85rem;
+  min-height: 1.25rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Loading state */
+.status--loading {
+  opacity: 0.85;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+/* Error state */
+.status--error {
+  color: var(--clr-yellow);
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Success / info */
+.status--success { opacity: 0.85; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1;   }
+}
+
+/* ── Refresh button ────────────────────────────────────────── */
+.btn--ghost {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.btn--ghost:hover  { background: rgba(255, 255, 255, 0.28); }
+.btn--ghost:active { background: rgba(255, 255, 255, 0.1);  }
+
+/* ── Main grid ─────────────────────────────────────────────── */
+.main {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* ── Card ──────────────────────────────────────────────────── */
+.card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-green-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 3px solid var(--clr-yellow);
+}
+
+/* ── Form ──────────────────────────────────────────────────── */
+.convert-form { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.form-row { display: flex; flex-direction: column; gap: 0.3rem; }
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--clr-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 1rem;
+  font-family: var(--font);
+  color: var(--clr-text);
+  background: var(--clr-bg);
+  border: 1.5px solid var(--clr-border);
+  border-radius: 8px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--clr-green);
+  box-shadow: 0 0 0 3px rgba(7, 137, 48, 0.18);
+}
+
+/* Invalid state */
+.form-input.is-invalid {
+  border-color: var(--clr-error);
+  box-shadow: 0 0 0 3px rgba(218, 18, 26, 0.15);
+}
+
+/* ── Validation error ──────────────────────────────────────── */
+.form-error {
+  font-size: 0.83rem;
+  color: var(--clr-error);
+  min-height: 1.1rem;
+  font-weight: 500;
+}
+
+/* ── Form actions ──────────────────────────────────────────── */
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn {
+  padding: 0.65rem 1.5rem;
+  font-size: 0.95rem;
+  font-family: var(--font);
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn--primary {
+  background: var(--clr-green);
+  color: #fff;
+  flex: 1;
+}
+
+.btn--primary:hover { background: var(--clr-green-dark); }
+
+.btn--secondary {
+  background: var(--clr-yellow);
+  color: var(--clr-green-dark);
+  flex: 1;
+}
+
+.btn--secondary:hover { background: #e8cb08; }
+
+/* ── Result box ────────────────────────────────────────────── */
+.result {
+  margin-top: 1.1rem;
+  min-height: 2.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--clr-green-dark);
+  background: transparent;
+  transition: background var(--transition), color var(--transition);
+}
+
+.result:not(:empty) {
+  background: #edf7f1;
+  border: 1.5px solid #b6dfc5;
+}
+
+.result--error {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: var(--clr-error);
+}
+
+/* ── Watchlist ─────────────────────────────────────────────── */
+.watchlist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+/* Each watchlist row */
+.watchlist__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 0.9rem;
+  background: var(--clr-bg);
+  border: 1px solid var(--clr-border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  animation: slideIn 0.18s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.watchlist__code {
+  font-weight: 700;
+  color: var(--clr-green-dark);
+  min-width: 3rem;
+}
+
+.watchlist__rate {
+  flex: 1;
+  color: var(--clr-muted);
+  font-size: 0.9rem;
+  margin-left: 0.75rem;
+}
+
+.watchlist__rate strong {
+  color: var(--clr-text);
+}
+
+/* Remove button on each row */
+.watchlist__rm {
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  color: var(--clr-muted);
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition);
+  flex-shrink: 0;
+}
+
+.watchlist__rm:hover {
+  background: #fee2e2;
+  color: var(--clr-error);
+  border-color: #fecaca;
+}
+
+/* Empty state ------------------------------------------------- */
+.watchlist__empty {
+  color: var(--clr-muted);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-style: italic;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--clr-muted);
+}
+
+.footer a {
+  color: var(--clr-green);
+  text-decoration: none;
+}
+
+.footer a:hover { text-decoration: underline; }
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (min-width: 600px) {
+  .convert-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-error   { grid-column: 1 / -1; }
+  .form-actions { grid-column: 1 / -1; }
+  .result       { grid-column: 1 / -1; }
+
+  .watchlist__item { padding: 0.8rem 1.1rem; }
+}

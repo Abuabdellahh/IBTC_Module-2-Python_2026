@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birr Watch 🇪🇹</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+
+      <!-- ── Header ─────────────────────────────────── -->
+      <header class="header">
+        <div class="header__brand">
+          <span class="header__flag">🇪🇹</span>
+          <h1 class="header__title">Birr Watch</h1>
+        </div>
+        <p class="header__subtitle">Live ETB Exchange Rate Tracker</p>
+
+        <!-- Status line: loading / error / last-updated -->
+        <p id="status" class="status" aria-live="polite"></p>
+
+        <!-- Refresh button -->
+        <button id="refresh-btn" class="btn btn--ghost" title="Refresh rates" aria-label="Refresh rates">
+          ↻ Refresh
+        </button>
+      </header>
+
+      <main class="main">
+
+        <!-- ── Converter card ──────────────────────── -->
+        <section class="card" aria-labelledby="converter-heading">
+          <h2 id="converter-heading" class="card__title">Convert ETB</h2>
+
+          <form id="convert-form" class="convert-form" novalidate>
+            <div class="form-row">
+              <label for="amount" class="form-label">Amount (ETB)</label>
+              <input
+                id="amount"
+                class="form-input"
+                type="number"
+                value="100"
+                min="0"
+                step="any"
+                placeholder="Enter amount"
+                aria-describedby="amount-error"
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="currency" class="form-label">To currency</label>
+              <select id="currency" class="form-select" aria-label="Select target currency">
+                <!-- Populated by app.js -->
+              </select>
+            </div>
+
+            <!-- Validation error -->
+            <p id="amount-error" class="form-error" role="alert" aria-live="polite"></p>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn--primary">Convert</button>
+              <button type="button" id="watch-btn" class="btn btn--secondary">+ Watch</button>
+            </div>
+          </form>
+
+          <!-- Conversion result -->
+          <div id="result" class="result" aria-live="polite"></div>
+        </section>
+
+        <!-- ── Watchlist card ──────────────────────── -->
+        <section class="card" aria-labelledby="watchlist-heading">
+          <h2 id="watchlist-heading" class="card__title">Watchlist</h2>
+          <ul id="watchlist" class="watchlist" aria-label="Watched currencies">
+            <!-- Populated by app.js -->
+          </ul>
+        </section>
+
+      </main>
+
+      <footer class="footer">
+        <p>Data: <a href="https://open.er-api.com" target="_blank" rel="noopener">open.er-api.com</a> · Base currency: ETB</p>
+      </footer>
+
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
