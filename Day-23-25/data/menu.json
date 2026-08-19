@@ -1,0 +1,14 @@
+[
+  { "id": 1, "name": "Doro Wat",       "category": "Main",       "price": 240, "spicy": true,  "emoji": "🍗", "desc": "Spicy chicken stew with boiled eggs" },
+  { "id": 2, "name": "Shiro",          "category": "Vegetarian", "price": 120, "spicy": false, "emoji": "🫘", "desc": "Smooth chickpea stew" },
+  { "id": 3, "name": "Tibs",           "category": "Main",       "price": 280, "spicy": false, "emoji": "🥩", "desc": "Sautéed beef with rosemary" },
+  { "id": 4, "name": "Misir Wat",      "category": "Vegetarian", "price": 110, "spicy": true,  "emoji": "🌶️", "desc": "Spiced red lentil stew" },
+  { "id": 5, "name": "Kitfo",          "category": "Main",       "price": 320, "spicy": false, "emoji": "🥩", "desc": "Ethiopian steak tartare with mitmita" },
+  { "id": 6, "name": "Gomen",          "category": "Vegetarian", "price": 100, "spicy": false, "emoji": "🥬", "desc": "Collard greens with garlic" },
+  { "id": 7, "name": "Ful",            "category": "Breakfast",  "price": 80,  "spicy": false, "emoji": "🫘", "desc": "Fava beans with spiced butter" },
+  { "id": 8, "name": "Firfir",         "category": "Breakfast",  "price": 90,  "spicy": true,  "emoji": "🫓", "desc": "Torn injera in berbere sauce" },
+  { "id": 9, "name": "Tej",            "category": "Drinks",     "price": 60,  "spicy": false, "emoji": "🍯", "desc": "Ethiopian honey wine" },
+  { "id": 10,"name": "Buna",           "category": "Drinks",     "price": 40,  "spicy": false, "emoji": "☕", "desc": "Traditional Ethiopian coffee" },
+  { "id": 11,"name": "Ayib",           "category": "Sides",      "price": 70,  "spicy": false, "emoji": "🧀", "desc": "Fresh Ethiopian cottage cheese" },
+  { "id": 12,"name": "Kategna",        "category": "Sides",      "price": 65,  "spicy": true,  "emoji": "🫓", "desc": "Toasted injera with berbere butter" }
+]

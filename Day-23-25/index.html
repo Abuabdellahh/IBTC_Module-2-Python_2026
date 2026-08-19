@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Addis Eats 🇪🇹</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Top navbar ───────────────────────────────── -->
+  <nav class="navbar" aria-label="Main navigation">
+    <a class="nav-brand" href="#" data-page="home">🍽️ Addis Eats</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <ul class="nav-links" role="list">
+      <li><a class="nav-link active" data-page="home"    href="#">Home</a></li>
+      <li><a class="nav-link"        data-page="menu"    href="#">Menu</a></li>
+      <li><a class="nav-link"        data-page="location" href="#">Location</a></li>
+      <li><a class="nav-link"        data-page="contact" href="#">Contact</a></li>
+      <li><a class="nav-link"        data-page="about"   href="#">About</a></li>
+      <li>
+        <a class="nav-link nav-cart" data-page="menu" href="#" aria-label="View cart">
+          🛒 <span id="cart-badge" class="cart-badge hidden">0</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE: HOME                                     -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div id="page-home" class="page">
+
+    <!-- ── Hero Slider ──────────────────────────────── -->
+    <section class="hero-slider" aria-label="Welcome" aria-roledescription="carousel">
+
+      <div class="slides" aria-live="polite">
+
+        <!-- Slide 1 -->
+        <div class="slide slide--active" data-slide="0"
+             style="--slide-bg: linear-gradient(135deg,#2E8B57 0%,#1a5c38 100%)"
+             aria-roledescription="slide" aria-label="Slide 1 of 4">
+          <div class="slide-content">
+            <p class="slide-tag">🇪🇹 Addis Ababa's Favourite</p>
+            <h1>Authentic Ethiopian<br>Food, Delivered.</h1>
+            <p>Fresh injera, rich stews, and traditional coffee — straight from our kitchen in Bole to your door.</p>
+            <div class="hero-actions">
+              <button class="btn-primary" data-page="menu">Order Now</button>
+              <button class="btn-outline" data-page="about">Our Story</button>
+            </div>
+          </div>
+          <div class="slide-visual" aria-hidden="true">
+            <div class="slide-emoji-main">🍽️</div>
+            <div class="slide-emoji-ring">
+              <span>🍗</span><span>🫘</span><span>🥩</span>
+              <span>☕</span><span>🥬</span><span>🍯</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide" data-slide="1"
+             style="--slide-bg: linear-gradient(135deg,#7b3f00 0%,#4a2500 100%)"
+             aria-roledescription="slide" aria-label="Slide 2 of 4">
+          <div class="slide-content">
+            <p class="slide-tag">🌶️ Chef's Special</p>
+            <h1>Doro Wat &amp;<br>Kitfo Night.</h1>
+            <p>Our most-loved dishes — slow-cooked berbere chicken and hand-spiced beef, ready in 35 minutes.</p>
+            <div class="hero-actions">
+              <button class="btn-primary" data-page="menu">See the Menu</button>
+            </div>
+          </div>
+          <div class="slide-visual" aria-hidden="true">
+            <div class="slide-emoji-main">🍗</div>
+            <div class="slide-emoji-ring">
+              <span>🌶️</span><span>🧅</span><span>🥚</span>
+              <span>🫙</span><span>🌿</span><span>🔥</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide" data-slide="2"
+             style="--slide-bg: linear-gradient(135deg,#1a6b3a 0%,#0d3d20 100%)"
+             aria-roledescription="slide" aria-label="Slide 3 of 4">
+          <div class="slide-content">
+            <p class="slide-tag">🥗 Fasting Menu</p>
+            <h1>100% Vegan &amp;<br>Fasting Options.</h1>
+            <p>Shiro, Misir Wat, Gomen, Ful — a full plant-based spread available every single day.</p>
+            <div class="hero-actions">
+              <button class="btn-primary" data-page="menu">Explore Vegan</button>
+            </div>
+          </div>
+          <div class="slide-visual" aria-hidden="true">
+            <div class="slide-emoji-main">🫘</div>
+            <div class="slide-emoji-ring">
+              <span>🥬</span><span>🌿</span><span>🧄</span>
+              <span>🫙</span><span>🌶️</span><span>🍋</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide" data-slide="3"
+             style="--slide-bg: linear-gradient(135deg,#1a3a6b 0%,#0d1f3d 100%)"
+             aria-roledescription="slide" aria-label="Slide 4 of 4">
+          <div class="slide-content">
+            <p class="slide-tag">📱 Pay with TeleBirr</p>
+            <h1>Fast Checkout,<br>Faster Delivery.</h1>
+            <p>Order in seconds with TeleBirr. Free delivery on orders over 500 ETB to Bole, Kazanchis and beyond.</p>
+            <div class="hero-actions">
+              <button class="btn-primary" data-page="menu">Order Now</button>
+              <button class="btn-outline" data-page="location">Delivery Zones</button>
+            </div>
+          </div>
+          <div class="slide-visual" aria-hidden="true">
+            <div class="slide-emoji-main">📱</div>
+            <div class="slide-emoji-ring">
+              <span>💳</span><span>🛵</span><span>📦</span>
+              <span>⚡</span><span>🗺️</span><span>✅</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.slides -->
+
+      <!-- Prev / Next arrows -->
+      <button class="slider-arrow slider-prev" aria-label="Previous slide">&#8249;</button>
+      <button class="slider-arrow slider-next" aria-label="Next slide">&#8250;</button>
+
+      <!-- Dot indicators -->
+      <div class="slider-dots" role="tablist" aria-label="Slide indicators">
+        <button class="slider-dot active" role="tab" aria-selected="true"  aria-label="Go to slide 1" data-dot="0"></button>
+        <button class="slider-dot"        role="tab" aria-selected="false" aria-label="Go to slide 2" data-dot="1"></button>
+        <button class="slider-dot"        role="tab" aria-selected="false" aria-label="Go to slide 3" data-dot="2"></button>
+        <button class="slider-dot"        role="tab" aria-selected="false" aria-label="Go to slide 4" data-dot="3"></button>
+      </div>
+
+    </section><!-- /.hero-slider -->
+
+    <section class="features" aria-label="Why choose us">
+      <h2>Why Addis Eats?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">🌿</span>
+          <h3>100% Authentic</h3>
+          <p>Every recipe passed down through generations. Real berbere, real niter kibbeh.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">⚡</span>
+          <h3>Fast Delivery</h3>
+          <p>30–45 minutes to Bole, Kazanchis, Megenagna, Piassa and CMC.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">📱</span>
+          <h3>Pay with TeleBirr</h3>
+          <p>Seamless checkout with Ethiopia's most trusted mobile payment.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🥗</span>
+          <h3>Vegan Friendly</h3>
+          <p>A full vegetarian and vegan menu — fasting options always available.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="popular" aria-label="Popular dishes">
+      <h2>Most Popular</h2>
+      <div id="popular-grid" class="popular-grid"></div>
+      <button class="btn-primary" data-page="menu" style="margin-top:1.5rem">See Full Menu →</button>
+    </section>
+
+    <section class="testimonials" aria-label="Customer reviews">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonials-grid">
+        <blockquote class="testimonial">
+          <p>"The Doro Wat is exactly like my grandmother's. Delivered hot in 35 minutes!"</p>
+          <footer>— Tigist B., Bole</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"Best Kitfo in Addis. I order every Friday. TeleBirr payment is so easy."</p>
+          <footer>— Dawit M., Kazanchis</footer>
+        </blockquote>
+        <blockquote class="testimonial">
+          <p>"The fasting menu is incredible. Shiro and Gomen together — perfect."</p>
+          <footer>— Meron A., Megenagna</footer>
+        </blockquote>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE: MENU                                     -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div id="page-menu" class="page hidden">
+
+    <header class="menu-header">
+      <div class="menu-header-inner">
+        <h1>Our Menu</h1>
+        <div class="search-bar">
+          <input id="search" type="search" placeholder="Search dishes…" aria-label="Search dishes" autocomplete="off" />
+        </div>
+      </div>
+      <nav class="filters" aria-label="Filter by category">
+        <button class="filter-btn active" data-cat="All">All</button>
+        <button class="filter-btn" data-cat="Main">Main</button>
+        <button class="filter-btn" data-cat="Vegetarian">Vegetarian</button>
+        <button class="filter-btn" data-cat="Breakfast">Breakfast</button>
+        <button class="filter-btn" data-cat="Sides">Sides</button>
+        <button class="filter-btn" data-cat="Drinks">Drinks</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="menu" aria-label="Menu" aria-live="polite"></section>
+
+      <aside id="cart-panel" aria-label="Your order">
+        <h2>🛒 Your Order</h2>
+        <ul id="cart-list" aria-label="Cart items"></ul>
+        <div class="cart-footer">
+          <p class="total-line">Total: <strong id="cart-total">0 ETB</strong></p>
+          <form id="checkout" novalidate aria-label="Checkout form">
+            <h3>Checkout</h3>
+            <label for="cust-name">Name</label>
+            <input id="cust-name" type="text" placeholder="Your name" autocomplete="name" />
+            <label for="cust-phone">Phone (TeleBirr)</label>
+            <input id="cust-phone" type="tel" placeholder="09xxxxxxxx" autocomplete="tel" />
+            <label for="cust-area">Delivery area</label>
+            <select id="cust-area">
+              <option value="Bole">Bole</option>
+              <option value="Kazanchis">Kazanchis</option>
+              <option value="Megenagna">Megenagna</option>
+              <option value="Piassa">Piassa</option>
+              <option value="CMC">CMC</option>
+            </select>
+            <p id="form-error" class="form-error" role="alert" aria-live="assertive"></p>
+            <button type="submit" id="order-btn">Place Order</button>
+          </form>
+        </div>
+      </aside>
+    </main>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE: LOCATION                                 -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div id="page-location" class="page hidden">
+    <div class="page-inner">
+      <h1>📍 Find Us</h1>
+      <p class="page-sub">We're in the heart of Bole — easy to reach from anywhere in Addis.</p>
+
+      <div class="location-grid">
+        <div class="location-info">
+          <div class="info-block">
+            <h3>🏠 Address</h3>
+            <p>Bole Road, Near Edna Mall<br>Bole Sub-City, Addis Ababa<br>Ethiopia</p>
+          </div>
+          <div class="info-block">
+            <h3>🕐 Opening Hours</h3>
+            <ul class="hours-list">
+              <li><span>Monday – Friday</span><span>7:00 AM – 10:00 PM</span></li>
+              <li><span>Saturday</span><span>8:00 AM – 11:00 PM</span></li>
+              <li><span>Sunday</span><span>9:00 AM – 9:00 PM</span></li>
+            </ul>
+          </div>
+          <div class="info-block">
+            <h3>🚗 Delivery Zones</h3>
+            <div class="zone-tags">
+              <span class="zone-tag">Bole</span>
+              <span class="zone-tag">Kazanchis</span>
+              <span class="zone-tag">Megenagna</span>
+              <span class="zone-tag">Piassa</span>
+              <span class="zone-tag">CMC</span>
+            </div>
+            <p class="zone-note">Free delivery on orders over 500 ETB · 30 ETB otherwise</p>
+          </div>
+          <div class="info-block">
+            <h3>📞 Phone</h3>
+            <p><a href="tel:+251911234567">+251 91 123 4567</a></p>
+            <p><a href="tel:+251922345678">+251 92 234 5678</a></p>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <iframe
+            title="Addis Eats location — Bole, Addis Ababa"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=38.7800%2C9.0100%2C38.8000%2C9.0250&amp;layer=mapnik&amp;marker=9.0175%2C38.7900"
+            width="100%"
+            height="380"
+            style="border:0; border-radius:10px;"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+          <a
+            class="map-link"
+            href="https://www.openstreetmap.org/?mlat=9.0175&mlon=38.7900#map=15/9.0175/38.7900"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Open in OpenStreetMap ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE: CONTACT                                  -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div id="page-contact" class="page hidden">
+    <div class="page-inner">
+      <h1>✉️ Contact Us</h1>
+      <p class="page-sub">Questions, feedback, or catering enquiries? We'd love to hear from you.</p>
+
+      <div class="contact-grid">
+        <form id="contact-form" class="contact-form" novalidate aria-label="Contact form">
+          <label for="cf-name">Your Name</label>
+          <input id="cf-name" type="text" placeholder="Abebe Girma" autocomplete="name" />
+
+          <label for="cf-email">Email Address</label>
+          <input id="cf-email" type="email" placeholder="abebe@example.com" autocomplete="email" />
+
+          <label for="cf-phone">Phone (optional)</label>
+          <input id="cf-phone" type="tel" placeholder="09xxxxxxxx" autocomplete="tel" />
+
+          <label for="cf-subject">Subject</label>
+          <select id="cf-subject">
+            <option value="">— Select a topic —</option>
+            <option value="order">Order issue</option>
+            <option value="catering">Catering enquiry</option>
+            <option value="feedback">Feedback</option>
+            <option value="other">Other</option>
+          </select>
+
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" rows="5" placeholder="Tell us how we can help…"></textarea>
+
+          <p id="cf-error" class="form-error" role="alert" aria-live="assertive"></p>
+          <p id="cf-success" class="form-success hidden" role="status" aria-live="polite">✅ Message sent! We'll reply within 24 hours.</p>
+          <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+          <div class="info-block">
+            <h3>📞 Call Us</h3>
+            <p><a href="tel:+251911234567">+251 91 123 4567</a></p>
+            <p class="muted">Daily 8 AM – 9 PM</p>
+          </div>
+          <div class="info-block">
+            <h3>📧 Email</h3>
+            <p><a href="mailto:hello@addiseats.et">hello@addiseats.et</a></p>
+            <p class="muted">We reply within 24 hours</p>
+          </div>
+          <div class="info-block">
+            <h3>💬 Telegram</h3>
+            <p><a href="https://t.me/addiseats" target="_blank" rel="noopener">@addiseats</a></p>
+            <p class="muted">Fastest response</p>
+          </div>
+          <div class="info-block">
+            <h3>📸 Follow Us</h3>
+            <div class="social-links">
+              <a href="#" aria-label="Instagram">📷 Instagram</a>
+              <a href="#" aria-label="Facebook">👍 Facebook</a>
+              <a href="#" aria-label="TikTok">🎵 TikTok</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════ -->
+  <!-- PAGE: ABOUT                                    -->
+  <!-- ══════════════════════════════════════════════ -->
+  <div id="page-about" class="page hidden">
+    <div class="page-inner">
+      <h1>🌿 Our Story</h1>
+      <p class="page-sub">From a family kitchen in Bole to Addis Ababa's favourite delivery.</p>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>How It Started</h2>
+          <p>Addis Eats was born in 2019 when Tigist Haile started cooking her mother's recipes for neighbours in Bole. Word spread fast. Within six months, what began as a weekend side project became a full kitchen serving hundreds of orders a week.</p>
+          <p>Today we're a team of 12, still cooking every dish from scratch with the same recipes — no shortcuts, no compromises.</p>
+
+          <h2>Our Values</h2>
+          <ul class="values-list">
+            <li>🌿 <strong>Authenticity</strong> — every recipe is traditional, every ingredient is sourced locally.</li>
+            <li>🤝 <strong>Community</strong> — we source from local farmers in Oromia and Amhara regions.</li>
+            <li>♻️ <strong>Sustainability</strong> — biodegradable packaging, zero food waste policy.</li>
+            <li>❤️ <strong>Inclusion</strong> — full fasting menu available every day of the year.</li>
+          </ul>
+        </div>
+
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-num">2019</span>
+            <span class="stat-label">Founded</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">12</span>
+            <span class="stat-label">Team members</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">500+</span>
+            <span class="stat-label">Orders / week</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">4.9 ⭐</span>
+            <span class="stat-label">Average rating</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="team" aria-label="Our team">
+        <h2>Meet the Team</h2>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar">👩‍🍳</div>
+            <h3>Tigist Haile</h3>
+            <p>Founder &amp; Head Chef</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">👨‍🍳</div>
+            <h3>Bekele Tadesse</h3>
+            <p>Sous Chef</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">👩‍💼</div>
+            <h3>Meron Alemu</h3>
+            <p>Operations Manager</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">👨‍💻</div>
+            <h3>Dawit Kebede</h3>
+            <p>Tech &amp; Delivery</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ── Order confirmation modal ─────────────────── -->
+  <div id="confirmation" class="confirmation hidden" role="dialog" aria-modal="true" aria-label="Order confirmation">
+    <div class="confirm-box">
+      <p class="confirm-icon">✅</p>
+      <h2>Order Placed!</h2>
+      <p id="confirm-msg"></p>
+      <button id="confirm-close">Back to Menu</button>
+    </div>
+  </div>
+
+  <!-- ── Footer ───────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <h3>🍽️ Addis Eats</h3>
+        <p>Authentic Ethiopian food delivered to your door in Addis Ababa.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#" data-page="home">Home</a></li>
+          <li><a href="#" data-page="menu">Menu</a></li>
+          <li><a href="#" data-page="location">Location</a></li>
+          <li><a href="#" data-page="contact">Contact</a></li>
+          <li><a href="#" data-page="about">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="tel:+251911234567">+251 91 123 4567</a></p>
+        <p><a href="mailto:hello@addiseats.et">hello@addiseats.et</a></p>
+        <p><a href="https://t.me/addiseats" target="_blank" rel="noopener">Telegram: @addiseats</a></p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p>Mon–Fri: 7 AM – 10 PM</p>
+        <p>Sat: 8 AM – 11 PM</p>
+        <p>Sun: 9 AM – 9 PM</p>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 Addis Eats · Bole, Addis Ababa · Pay with TeleBirr</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
